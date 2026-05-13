@@ -1,0 +1,8 @@
+/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/timm/optim/optim_factory.py:7: FutureWarning: Importing from timm.optim.optim_factory is deprecated, please import via timm.optim
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.optim", FutureWarning)
+/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Traceback (most recent call last):
+  File "/scratch/abircs/sudipta/atlas/run_main.py", line 40, in <module>
+    from main import main as original_main
+ImportError: cannot import name 'main' from 'main' (/scratch/abircs/sudipta/atlas/main.py)

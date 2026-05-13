@@ -1,0 +1,4 @@
+[INFO][Rank 3] Logging to /scratch/abircs/sudipta/atlas/experiment/20250812_104906
+[2025-08-12 10:49:13,830] [WARNING] [real_accelerator.py:174:get_accelerator] Setting accelerator to CPU. If you have GPU or other accelerator, we were unable to detect it.
+[2025-08-12 10:49:13,832] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cpu (auto detect)
+Attention implementation: flash_attention2

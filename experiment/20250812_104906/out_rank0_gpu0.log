@@ -1,0 +1,3 @@
+[INFO][Rank 0] Logging to /scratch/abircs/sudipta/atlas/experiment/20250812_104906
+[2025-08-12 10:49:23,915] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Attention implementation: flash_attention2

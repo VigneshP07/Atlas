@@ -1,0 +1,145 @@
+WARNING:__main__:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+WARNING:__main__:
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+[W812 10:35:16.674919906 socket.cpp:752] [c10d] The client socket has failed to connect to [rpgpu011]:29500 (errno: 22 - Invalid argument).
+[W812 10:35:16.675506862 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:16.057720871 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:17.093959525 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:18.023245536 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:19.182506256 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:22.247742618 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:24.163979190 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:29.960275670 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:37.644666544 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:35:50.958914164 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:36:01.213170970 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:36:25.479439840 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:37:09.372718967 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:37:47.569967277 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:39:12.492234294 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:40:41.688343513 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:41:19.681618422 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:42:46.754870684 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:43:30.160152987 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:44:06.011380071 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:44:51.247650144 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:45:45.794905087 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:46:59.129181771 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:48:27.316458259 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:49:39.581732162 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[E812 10:49:39.582555468 socket.cpp:1011] [c10d] The client socket has timed out after 900000ms while trying to connect to (fe80::2a0:22ff:fe01:e42, 29500).
+[W812 10:49:39.690278510 TCPStore.cpp:358] [c10d] TCP client failed to connect/validate to host fe80::2a0:22ff:fe01:e42:29500 - retrying (try=0, timeout=900000ms, delay=33109ms): The client socket has timed out after 900000ms while trying to connect to (fe80::2a0:22ff:fe01:e42, 29500).
+Exception raised from throwTimeoutError at /opt/conda/conda-bld/pytorch_1729647382455/work/torch/csrc/distributed/c10d/socket.cpp:1013 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x96 (0x7fd473348446 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x1331dd0 (0x7fd4b7820dd0 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x5d7b295 (0x7fd4bc26a295 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5d7b72b (0x7fd4bc26a72b in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: <unknown function> + 0x5d7b8a4 (0x7fd4bc26a8a4 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: <unknown function> + 0x5d39516 (0x7fd4bc228516 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: c10d::TCPStore::TCPStore(std::string, c10d::TCPStoreOptions const&) + 0x20c (0x7fd4bc22b47c in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: <unknown function> + 0xd9acdd (0x7fd4c4d5dcdd in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #8: <unknown function> + 0x4cb474 (0x7fd4c448e474 in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #9: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x4fdcf7]
+frame #10: _PyObject_MakeTpCall + 0x25b (0x4f747b in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #11: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x509d6f]
+frame #12: PyVectorcall_Call + 0xb9 (0x50a909 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #13: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x507a4c]
+frame #14: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x4f77e6]
+frame #15: <unknown function> + 0x4c9ccb (0x7fd4c448cccb in /scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #16: _PyObject_MakeTpCall + 0x25b (0x4f747b in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #17: _PyEval_EvalFrameDefault + 0x56d2 (0x4f3802 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #18: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #19: _PyEval_EvalFrameDefault + 0x731 (0x4ee861 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #20: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #21: _PyEval_EvalFrameDefault + 0x2b79 (0x4f0ca9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #22: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #23: _PyEval_EvalFrameDefault + 0x731 (0x4ee861 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #24: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #25: _PyEval_EvalFrameDefault + 0x2b79 (0x4f0ca9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #26: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #27: _PyEval_EvalFrameDefault + 0x731 (0x4ee861 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #28: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #29: _PyEval_EvalFrameDefault + 0x731 (0x4ee861 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #30: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #31: _PyEval_EvalFrameDefault + 0x2b79 (0x4f0ca9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #32: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #33: _PyEval_EvalFrameDefault + 0x731 (0x4ee861 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #34: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #35: _PyEval_EvalFrameDefault + 0x31f (0x4ee44f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #36: _PyObject_FastCallDictTstate + 0xcd (0x4f67cd in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #37: _PyObject_Call_Prepend + 0x66 (0x507f66 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #38: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x5d0153]
+frame #39: PyObject_Call + 0x209 (0x50a6f9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #40: _PyEval_EvalFrameDefault + 0x2b79 (0x4f0ca9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #41: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #42: _PyEval_EvalFrameDefault + 0x31f (0x4ee44f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #43: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #44: _PyEval_EvalFrameDefault + 0x2b79 (0x4f0ca9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #45: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #46: _PyEval_EvalFrameDefault + 0x31f (0x4ee44f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #47: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x5953a2]
+frame #48: PyEval_EvalCode + 0x87 (0x5952e7 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #49: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x59c80d]
+frame #50: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x4fe324]
+frame #51: _PyEval_EvalFrameDefault + 0x31f (0x4ee44f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #52: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #53: _PyEval_EvalFrameDefault + 0x31f (0x4ee44f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #54: _PyFunction_Vectorcall + 0x6f (0x4fe13f in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #55: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x5b8b6f]
+frame #56: Py_RunMain + 0xc2 (0x5b8652 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #57: Py_BytesMain + 0x39 (0x5885d9 in /scratch/abircs/condaenvs/atlas-env-new/bin/python)
+frame #58: __libc_start_main + 0xe5 (0x7fd4cd22fd85 in /lib64/libc.so.6)
+frame #59: /scratch/abircs/condaenvs/atlas-env-new/bin/python() [0x58848e]
+
+[W812 10:50:12.805807477 socket.cpp:752] [c10d] The client socket has failed to connect to [rpgpu011]:29500 (errno: 22 - Invalid argument).
+[W812 10:50:12.805844044 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:50:17.444458998 socket.cpp:462] [c10d] waitForInput: poll for socket SocketImpl(fd=4, addr=[rpgpu012]:45742, remote=[rpgpu011]:29500) returned 0, likely a timeout
+[W812 10:50:17.448260733 socket.cpp:487] [c10d] waitForInput: socket SocketImpl(fd=4, addr=[rpgpu012]:45742, remote=[rpgpu011]:29500) timed out after 900000ms
+Traceback (most recent call last):
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/run.py", line 923, in <module>
+    main()
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 260, in launch_agent
+    result = agent.run()
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 696, in run
+    result = self._invoke_run(role)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 849, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 668, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 513, in _rendezvous
+    workers = self._assign_worker_ranks(
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 137, in wrapper
+    result = f(*args, **kwargs)
+  File "/scratch/abircs/condaenvs/atlas-env-new/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 633, in _assign_worker_ranks
+    ) = json.loads(store.get(f"{ASSIGNED_RANKS_PREFIX}{group_rank}"))
+torch.distributed.DistStoreError: wait timeout after 900000ms, keys: /none/torchelastic/assigned_ranks/1
+[W812 10:51:40.804042413 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:52:15.491480189 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:53:43.257751511 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:54:15.302063335 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:54:59.387351698 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:56:14.242622118 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).
+[W812 10:57:35.464873689 socket.cpp:752] [c10d] The IPv4 network addresses of (fe80::2a0:22ff:fe01:e42, 29500) cannot be retrieved (gai error: -9 - Address family for hostname not supported).

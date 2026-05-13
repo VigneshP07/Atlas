@@ -1,0 +1,66 @@
+W0430 07:20:37.430000 219022 site-packages/torch/distributed/run.py:793] 
+W0430 07:20:37.430000 219022 site-packages/torch/distributed/run.py:793] *****************************************
+W0430 07:20:37.430000 219022 site-packages/torch/distributed/run.py:793] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0430 07:20:37.430000 219022 site-packages/torch/distributed/run.py:793] *****************************************
+/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/timm/optim/optim_factory.py:7: FutureWarning: Importing from timm.optim.optim_factory is deprecated, please import via timm.optim
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.optim", FutureWarning)
+/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/timm/optim/optim_factory.py:7: FutureWarning: Importing from timm.optim.optim_factory is deprecated, please import via timm.optim
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.optim", FutureWarning)
+/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[rank1]:[W430 07:20:51.192244791 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+[rank0]:[W430 07:20:57.493670748 ProcessGroupNCCL.cpp:4115] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 to perform barrier as devices used by this process are currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect.Specify device_ids in barrier() to force use of a particular device,or call init_process_group() with a device_id.
+/home/others/abir_proj/codebase/Atlas/sandstone/models/atlas.py:103: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(pretrained_path, map_location="cpu")
+/home/others/abir_proj/codebase/Atlas/sandstone/models/atlas.py:103: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(pretrained_path, map_location="cpu")
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/others/abir_proj/codebase/Atlas/main.py", line 545, in <module>
+[rank1]:     build_experiment(config_args)
+[rank1]:   File "/home/others/abir_proj/codebase/Atlas/main.py", line 444, in build_experiment
+[rank1]:     optimizer: optimizers.Optimizer = optimizers.__dict__[args.optimizer.type](param_groups, **args.optimizer.kwargs)
+[rank1]:   File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/optim/adamw.py", line 55, in __init__
+[rank1]:     if not 0.0 <= lr:
+[rank1]: TypeError: '<=' not supported between instances of 'float' and 'str'
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/others/abir_proj/codebase/Atlas/main.py", line 545, in <module>
+[rank0]:     build_experiment(config_args)
+[rank0]:   File "/home/others/abir_proj/codebase/Atlas/main.py", line 444, in build_experiment
+[rank0]:     optimizer: optimizers.Optimizer = optimizers.__dict__[args.optimizer.type](param_groups, **args.optimizer.kwargs)
+[rank0]:   File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/optim/adamw.py", line 55, in __init__
+[rank0]:     if not 0.0 <= lr:
+[rank0]: TypeError: '<=' not supported between instances of 'float' and 'str'
+[rank0]:[W430 07:21:16.581471276 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+W0430 07:21:17.418000 219022 site-packages/torch/distributed/elastic/multiprocessing/api.py:897] Sending process 219026 closing signal SIGTERM
+E0430 07:21:17.883000 219022 site-packages/torch/distributed/elastic/multiprocessing/api.py:869] failed (exitcode: 1) local_rank: 0 (pid: 219025) of binary: /home/others/abir_proj/Env/atlas_env/bin/python
+Traceback (most recent call last):
+  File "/home/others/abir_proj/Env/atlas_env/bin/torchrun", line 33, in <module>
+    sys.exit(load_entry_point('torch==2.5.0', 'console_scripts', 'torchrun')())
+  File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/distributed/run.py", line 919, in main
+    run(args)
+  File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/distributed/run.py", line 910, in run
+    elastic_launch(
+  File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 138, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/others/abir_proj/Env/atlas_env/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 269, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-04-30_07:21:17
+  host      : gnode6
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 219025)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

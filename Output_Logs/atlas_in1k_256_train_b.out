@@ -1,0 +1,1047 @@
+[2026-04-26 16:10:50,101] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/bt2/22CS10052/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Attention implementation: flash_attention2
+2026-04-26 16:11:03,901 - Local rank: -1
+2026-04-26 16:11:03,902 - Loading config from configs/atlas_256_in1k_b.yaml
+2026-04-26 16:11:03,929 - Replacing key at main.exp_name with atlas_d2d10_base_r256_b
+2026-04-26 16:11:03,929 - Replacing key at main.tags with ['atlas', 'hr-in100']
+2026-04-26 16:11:03,929 - Replacing key at main.phases.dev with True
+2026-04-26 16:11:03,929 - Replacing key at main.checkpoints_dir with /home/bt2/22CS10052/Codebase/Atlas/checkpoints/Atlas_in1k_256_b
+2026-04-26 16:11:03,930 - Replacing key at main.wandb_project with architecture
+2026-04-26 16:11:03,930 - Replacing key at main.disable_wandb with True
+2026-04-26 16:11:03,930 - Replacing key at main.allow_overwriting_experiment_checkpoints with True
+2026-04-26 16:11:03,930 - Replacing key at dataset.shared_dataset_kwargs.data_path with /home/bt2/22CS10052/task/imagenet/
+2026-04-26 16:11:03,930 - Replacing key at dataset.image_augmentations with [{'type': 'TimmAug', 'kwargs': {'input_size': 256, 'color_jitter': None, 'aa': 'rand-m9-mstd0.5-inc1', 'reprob': 0.25, 'remode': 'pixel', 'recount': 1, 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}}]
+2026-04-26 16:11:03,930 - Replacing key at dataset.test_image_augmentations with [{'type': 'TorchvisionResize', 'kwargs': {'img_size': [256, 256]}}, {'type': 'TorchvisionCenterCrop', 'kwargs': {'height': 256, 'width': 256}}, {'type': 'TorchvisionToTensor', 'kwargs': {}}, {'type': 'NormalizeTensor2d', 'kwargs': {'channel_means': [0.485, 0.456, 0.406], 'channel_stds': [0.229, 0.224, 0.225]}}]
+2026-04-26 16:11:03,930 - Replacing key at dataloader.batch_size with 384
+2026-04-26 16:11:03,930 - Replacing key at dataloader.eval_batch_size with 384
+2026-04-26 16:11:03,930 - Replacing key at dataloader.num_workers with 16
+2026-04-26 16:11:03,930 - Replacing key at dataloader.train_drop_last with True
+2026-04-26 16:11:03,930 - Replacing key at dataloader.val_drop_last with True
+2026-04-26 16:11:03,930 - Replacing key at engine.type with Classifier
+2026-04-26 16:11:03,930 - Replacing key at optimizer.type with AdamW
+2026-04-26 16:11:03,930 - Replacing key at optimizer.kwargs with {'lr': 0.0003, 'betas': [0.9, 0.999]}
+2026-04-26 16:11:03,930 - Replacing key at optimizer.scheduler.interval with step
+2026-04-26 16:11:03,930 - Replacing key at optimizer.scheduler.type with StepCosineAnnealingWarmup
+2026-04-26 16:11:03,930 - Replacing key at optimizer.scheduler.kwargs with {'warmup_epochs': 10, 'max_epochs': 100, 'min_lr': 1e-06}
+2026-04-26 16:11:03,930 - Replacing key at model.type with Atlas
+2026-04-26 16:11:03,930 - Replacing key at model.kwargs with {'num_classes': 1000, 'img_size': [256, 256, 1], 'patch_size': [16, 16, 1], 'in_chans': 3, 'embed_dim': 768, 'kwargs_list': [{'img_size': [256, 256, 1], 'patch_size': 16, 'local2global': 4, 'merge_ratio': 16, 'in_dim': 64, 'dim': 768, 'num_features': 192, 'num_classes': 1000, 'drop_path_rate': 0.4, 'global_pool': 'avg', 'class_token': False, 'depths': 2, 'qkv_bias': True, 'pre_norm': False, 'num_heads': 12, 'mlp_ratio': 4, 'embed_dim': 768, 'embed_op': 'convstem', 'layer_args': {'qkv_bias': True, 'qk_scale': 'None', 'input_resolution': 256}}, {'img_size': [16, 16, 1], 'patch_size': 1, 'local2global': 4, 'merge_ratio': 16, 'num_classes': 1000, 'drop_path_rate': 0.4, 'global_pool': 'avg', 'class_token': False, 'depths': 10, 'qkv_bias': True, 'pre_norm': False, 'num_heads': 12, 'mlp_ratio': 4, 'embed_dim': 768, 'embed_op': 'conv2d', 'in_dim': 64, 'dim': 768, 'num_features': 192, 'layer_args': {'qkv_bias': True, 'qk_scale': 'None', 'input_resolution': 256}}]}
+2026-04-26 16:11:03,934 - | distributed init (global rank 0): env://, gpu 0 / world_size 1
+experiment_checkpoints_dir: /home/bt2/22CS10052/Codebase/Atlas/checkpoints/Atlas_in1k_256_b/atlas_d2d10_base_r256_b
+2026-04-26 16:11:05,141 - | initialized host gnode1 as rank 0
+2026-04-26 16:11:05,176 - Multi-GPU: True
+2026-04-26 16:11:05,255 - Checkpoint directory: /home/bt2/22CS10052/Codebase/Atlas/checkpoints/Atlas_in1k_256_b/atlas_d2d10_base_r256_b
+2026-04-26 16:11:34,604 - Using distributed sampler
+2026-04-26 16:11:38,747 - Multi-GPU distributed evaluation is enabled: the results may be a little inaccurate due to the padding or drop_last in DistributedSampler
+2026-04-26 16:11:38,747 - Mixup is activated!
+2026-04-26 16:11:38,761 - Engine built!
+=========================================
+Number of parameters
+trainable_params: 110239736
+non_trainable_params: 0
+=========================================
+2026-04-26 16:11:39,322 - Model: Atlas(
+  (atlas_models): ModuleList(
+    (0): StackMSA(
+      (patch_embed): MultiConvEmbed(
+        (proj): Identity()
+        (conv0): Sequential(
+          (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=0.0001, momentum=0.1, affine=True, track_running_stats=True)
+          (2): ReLU()
+          (3): Conv2d(64, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(192, eps=0.0001, momentum=0.1, affine=True, track_running_stats=True)
+          (5): ReLU()
+        )
+        (conv1): Sequential(
+          (0): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (1): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (2): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+        )
+        (ds1): EarlyConvDS(
+          (norm): LayerNorm2d((192,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(192, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        )
+        (conv2): Sequential(
+          (0): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (1): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (2): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+        )
+        (ds2): EarlyConvDS(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        )
+        (ds3): EarlyConvDS_56(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(8, 8), bias=False)
+        )
+        (ds4): EarlyConvDS_112(
+          (norm): LayerNorm2d((192,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(192, 384, kernel_size=(4, 4), stride=(2, 2), padding=(17, 17), bias=False)
+        )
+        (ds5): EarlyConvDS_28(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(4, 4), bias=False)
+        )
+        (ds6): EarlyConvDS_14(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(2, 2), bias=False)
+        )
+      )
+      (levels): ModuleList(
+        (0): MultiScaleAttentionLayer(
+          (blocks): ModuleList(
+            (0): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): Identity()
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (1): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.400)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+      (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (avgpool): AdaptiveAvgPool2d(output_size=1)
+      (head): Linear(in_features=768, out_features=1000, bias=True)
+    )
+    (1): StackMSA(
+      (levels): ModuleList(
+        (0): MultiScaleAttentionLayer(
+          (blocks): ModuleList(
+            (0): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): Identity()
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (1): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.044)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (2): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.089)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (3): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.133)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (4): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.178)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (5): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.222)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (6): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.267)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (7): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.311)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (8): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.356)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (9): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.400)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+      (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (avgpool): AdaptiveAvgPool2d(output_size=1)
+      (head): Linear(in_features=768, out_features=1000, bias=True)
+    )
+  )
+  (readout_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (fc_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=768, out_features=1000, bias=True)
+)
+2026-04-26 16:11:39,411 - Start training for 100 epochs
+Epoch: [0][   1/3336]	Time 19.982 (19.982)	Data 11.644 (11.644)	max lr 0.0000e+00 (0.0000e+00)	min lr 0.0000e+00 (0.0000e+00)	Loss 1.7718e+00 (1.7718e+00)	Max mem (MiB) 850 (850)
+Epoch: [0][ 201/3336]	Time  0.656 ( 0.759)	Data  0.001 ( 0.059)	max lr 1.7986e-06 (8.8586e-07)	min lr 1.7986e-06 (8.8586e-07)	Loss 1.7472e+00 (1.7640e+00)	Max mem (MiB) 58680 (58372)
+Epoch: [0][ 401/3336]	Time  0.646 ( 0.708)	Data  0.000 ( 0.030)	max lr 3.5971e-06 (1.7851e-06)	min lr 3.5971e-06 (1.7851e-06)	Loss 1.7445e+00 (1.7551e+00)	Max mem (MiB) 58680 (58526)
+Epoch: [0][ 601/3336]	Time  0.650 ( 0.690)	Data  0.001 ( 0.020)	max lr 5.3957e-06 (2.6844e-06)	min lr 5.3957e-06 (2.6844e-06)	Loss 1.7343e+00 (1.7485e+00)	Max mem (MiB) 58680 (58577)
+Epoch: [0][ 801/3336]	Time  0.649 ( 0.682)	Data  0.000 ( 0.016)	max lr 7.1942e-06 (3.5836e-06)	min lr 7.1942e-06 (3.5836e-06)	Loss 1.7259e+00 (1.7434e+00)	Max mem (MiB) 58680 (58603)
+Epoch: [0][1001/3336]	Time  0.648 ( 0.684)	Data  0.000 ( 0.020)	max lr 8.9928e-06 (4.4829e-06)	min lr 8.9928e-06 (4.4829e-06)	Loss 1.7214e+00 (1.7390e+00)	Max mem (MiB) 58681 (58619)
+Epoch: [0][1201/3336]	Time  0.652 ( 0.684)	Data  0.000 ( 0.022)	max lr 1.0791e-05 (5.3822e-06)	min lr 1.0791e-05 (5.3822e-06)	Loss 1.7114e+00 (1.7349e+00)	Max mem (MiB) 58681 (58629)
+Epoch: [0][1401/3336]	Time  0.647 ( 0.688)	Data  0.001 ( 0.027)	max lr 1.2590e-05 (6.2815e-06)	min lr 1.2590e-05 (6.2815e-06)	Loss 1.6977e+00 (1.7312e+00)	Max mem (MiB) 58681 (58636)
+Epoch: [0][1601/3336]	Time  0.652 ( 0.688)	Data  0.000 ( 0.028)	max lr 1.4388e-05 (7.1808e-06)	min lr 1.4388e-05 (7.1808e-06)	Loss 1.6840e+00 (1.7275e+00)	Max mem (MiB) 58681 (58642)
+Epoch: [0][1801/3336]	Time  0.653 ( 0.688)	Data  0.000 ( 0.029)	max lr 1.6187e-05 (8.0800e-06)	min lr 1.6187e-05 (8.0800e-06)	Loss 1.6876e+00 (1.7240e+00)	Max mem (MiB) 58681 (58646)
+Epoch: [0][2001/3336]	Time  0.648 ( 0.689)	Data  0.000 ( 0.030)	max lr 1.7986e-05 (8.9793e-06)	min lr 1.7986e-05 (8.9793e-06)	Loss 1.6692e+00 (1.7205e+00)	Max mem (MiB) 58681 (58650)
+Epoch: [0][2201/3336]	Time  0.652 ( 0.689)	Data  0.000 ( 0.031)	max lr 1.9784e-05 (9.8786e-06)	min lr 1.9784e-05 (9.8786e-06)	Loss 1.6496e+00 (1.7170e+00)	Max mem (MiB) 58681 (58653)
+Epoch: [0][2401/3336]	Time  0.650 ( 0.688)	Data  0.000 ( 0.031)	max lr 2.1583e-05 (1.0778e-05)	min lr 2.1583e-05 (1.0778e-05)	Loss 1.6683e+00 (1.7136e+00)	Max mem (MiB) 58681 (58655)
+Epoch: [0][2601/3336]	Time  0.653 ( 0.689)	Data  0.001 ( 0.032)	max lr 2.3381e-05 (1.1677e-05)	min lr 2.3381e-05 (1.1677e-05)	Loss 1.6574e+00 (1.7101e+00)	Max mem (MiB) 58681 (58657)
+Epoch: [0][2801/3336]	Time  0.654 ( 0.722)	Data  0.001 ( 0.065)	max lr 2.5180e-05 (1.2576e-05)	min lr 2.5180e-05 (1.2576e-05)	Loss 1.6750e+00 (1.7068e+00)	Max mem (MiB) 58681 (58659)
+Epoch: [0][3001/3336]	Time  0.657 ( 0.725)	Data  0.001 ( 0.068)	max lr 2.6978e-05 (1.3476e-05)	min lr 2.6978e-05 (1.3476e-05)	Loss 1.6660e+00 (1.7036e+00)	Max mem (MiB) 58682 (58660)
+Epoch: [0][3201/3336]	Time  0.650 ( 0.725)	Data  0.000 ( 0.068)	max lr 2.8777e-05 (1.4375e-05)	min lr 2.8777e-05 (1.4375e-05)	Loss 1.6866e+00 (1.7006e+00)	Max mem (MiB) 58682 (58662)
+2026-04-26 16:51:57,171 - train_accuracy: 0.0000
+2026-04-26 16:51:57,172 - train_total: 1281024.0000
+2026-04-26 16:51:57,172 - train_correct: 0.0000
+2026-04-26 16:53:51,475 - val_accuracy: 1.0000
+2026-04-26 16:53:51,477 - eval_accuracy: 0.0228
+2026-04-26 16:53:51,477 - eval_total: 49920.0000
+2026-04-26 16:53:51,477 - eval_correct: 1139.0000
+Epoch: [1][   1/3336]	Time  5.701 ( 5.701)	Data  5.058 ( 5.058)	max lr 3.0000e-05 (3.0000e-05)	min lr 3.0000e-05 (3.0000e-05)	Loss 1.6260e+00 (1.6260e+00)	Max mem (MiB) 58682 (58682)
+Epoch: [1][ 201/3336]	Time  0.654 ( 0.690)	Data  0.000 ( 0.026)	max lr 3.1799e-05 (3.0886e-05)	min lr 3.1799e-05 (3.0886e-05)	Loss 1.6625e+00 (1.6440e+00)	Max mem (MiB) 58684 (58683)
+Epoch: [1][ 401/3336]	Time  0.651 ( 0.674)	Data  0.000 ( 0.013)	max lr 3.3597e-05 (3.1785e-05)	min lr 3.3597e-05 (3.1785e-05)	Loss 1.6445e+00 (1.6402e+00)	Max mem (MiB) 58684 (58683)
+Epoch: [1][ 601/3336]	Time  0.649 ( 0.668)	Data  0.001 ( 0.010)	max lr 3.5396e-05 (3.2684e-05)	min lr 3.5396e-05 (3.2684e-05)	Loss 1.6643e+00 (1.6399e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][ 801/3336]	Time  0.648 ( 0.665)	Data  0.000 ( 0.008)	max lr 3.7194e-05 (3.3584e-05)	min lr 3.7194e-05 (3.3584e-05)	Loss 1.5744e+00 (1.6371e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][1001/3336]	Time  0.648 ( 0.663)	Data  0.000 ( 0.006)	max lr 3.8993e-05 (3.4483e-05)	min lr 3.8993e-05 (3.4483e-05)	Loss 1.5703e+00 (1.6348e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][1201/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 4.0791e-05 (3.5382e-05)	min lr 4.0791e-05 (3.5382e-05)	Loss 1.6553e+00 (1.6319e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][1401/3336]	Time  0.648 ( 0.661)	Data  0.000 ( 0.005)	max lr 4.2590e-05 (3.6281e-05)	min lr 4.2590e-05 (3.6281e-05)	Loss 1.6530e+00 (1.6301e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][1601/3336]	Time  0.647 ( 0.660)	Data  0.000 ( 0.004)	max lr 4.4388e-05 (3.7181e-05)	min lr 4.4388e-05 (3.7181e-05)	Loss 1.6259e+00 (1.6273e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][1801/3336]	Time  0.648 ( 0.659)	Data  0.000 ( 0.004)	max lr 4.6187e-05 (3.8080e-05)	min lr 4.6187e-05 (3.8080e-05)	Loss 1.5904e+00 (1.6246e+00)	Max mem (MiB) 58684 (58684)
+Epoch: [1][2001/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 4.7986e-05 (3.8979e-05)	min lr 4.7986e-05 (3.8979e-05)	Loss 1.5763e+00 (1.6222e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][2201/3336]	Time  0.650 ( 0.659)	Data  0.001 ( 0.003)	max lr 4.9784e-05 (3.9879e-05)	min lr 4.9784e-05 (3.9879e-05)	Loss 1.5317e+00 (1.6199e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][2401/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.003)	max lr 5.1583e-05 (4.0778e-05)	min lr 5.1583e-05 (4.0778e-05)	Loss 1.5191e+00 (1.6170e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][2601/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.003)	max lr 5.3381e-05 (4.1677e-05)	min lr 5.3381e-05 (4.1677e-05)	Loss 1.6229e+00 (1.6146e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][2801/3336]	Time  0.647 ( 0.658)	Data  0.000 ( 0.003)	max lr 5.5180e-05 (4.2576e-05)	min lr 5.5180e-05 (4.2576e-05)	Loss 1.5919e+00 (1.6118e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][3001/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 5.6978e-05 (4.3476e-05)	min lr 5.6978e-05 (4.3476e-05)	Loss 1.5175e+00 (1.6093e+00)	Max mem (MiB) 58685 (58684)
+Epoch: [1][3201/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 5.8777e-05 (4.4375e-05)	min lr 5.8777e-05 (4.4375e-05)	Loss 1.6411e+00 (1.6068e+00)	Max mem (MiB) 58685 (58684)
+2026-04-26 17:30:24,881 - train_accuracy: 0.0000
+2026-04-26 17:30:24,882 - train_total: 1281024.0000
+2026-04-26 17:30:24,882 - train_correct: 0.0000
+2026-04-26 17:31:09,952 - val_accuracy: 1.0000
+2026-04-26 17:31:09,952 - eval_accuracy: 0.0787
+2026-04-26 17:31:09,952 - eval_total: 49920.0000
+2026-04-26 17:31:09,952 - eval_correct: 3928.0000
+Epoch: [2][   1/3336]	Time  3.931 ( 3.931)	Data  3.282 ( 3.282)	max lr 6.0000e-05 (6.0000e-05)	min lr 6.0000e-05 (6.0000e-05)	Loss 1.6118e+00 (1.6118e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][ 201/3336]	Time  0.649 ( 0.674)	Data  0.000 ( 0.017)	max lr 6.1799e-05 (6.0886e-05)	min lr 6.1799e-05 (6.0886e-05)	Loss 1.5004e+00 (1.5593e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][ 401/3336]	Time  0.647 ( 0.665)	Data  0.000 ( 0.009)	max lr 6.3597e-05 (6.1785e-05)	min lr 6.3597e-05 (6.1785e-05)	Loss 1.5141e+00 (1.5551e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][ 601/3336]	Time  0.650 ( 0.662)	Data  0.001 ( 0.006)	max lr 6.5396e-05 (6.2684e-05)	min lr 6.5396e-05 (6.2684e-05)	Loss 1.5621e+00 (1.5550e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][ 801/3336]	Time  0.650 ( 0.660)	Data  0.000 ( 0.005)	max lr 6.7194e-05 (6.3584e-05)	min lr 6.7194e-05 (6.3584e-05)	Loss 1.5907e+00 (1.5527e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][1001/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.004)	max lr 6.8993e-05 (6.4483e-05)	min lr 6.8993e-05 (6.4483e-05)	Loss 1.6117e+00 (1.5502e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][1201/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.003)	max lr 7.0791e-05 (6.5382e-05)	min lr 7.0791e-05 (6.5382e-05)	Loss 1.6017e+00 (1.5465e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][1401/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.003)	max lr 7.2590e-05 (6.6281e-05)	min lr 7.2590e-05 (6.6281e-05)	Loss 1.5000e+00 (1.5454e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][1601/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.003)	max lr 7.4388e-05 (6.7181e-05)	min lr 7.4388e-05 (6.7181e-05)	Loss 1.5430e+00 (1.5431e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][1801/3336]	Time  0.646 ( 0.657)	Data  0.000 ( 0.003)	max lr 7.6187e-05 (6.8080e-05)	min lr 7.6187e-05 (6.8080e-05)	Loss 1.5950e+00 (1.5402e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][2001/3336]	Time  0.651 ( 0.657)	Data  0.000 ( 0.002)	max lr 7.7986e-05 (6.8979e-05)	min lr 7.7986e-05 (6.8979e-05)	Loss 1.5793e+00 (1.5371e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][2201/3336]	Time  0.650 ( 0.657)	Data  0.000 ( 0.002)	max lr 7.9784e-05 (6.9879e-05)	min lr 7.9784e-05 (6.9879e-05)	Loss 1.4754e+00 (1.5343e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][2401/3336]	Time  0.647 ( 0.657)	Data  0.000 ( 0.002)	max lr 8.1583e-05 (7.0778e-05)	min lr 8.1583e-05 (7.0778e-05)	Loss 1.5743e+00 (1.5323e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][2601/3336]	Time  0.648 ( 0.657)	Data  0.000 ( 0.002)	max lr 8.3381e-05 (7.1677e-05)	min lr 8.3381e-05 (7.1677e-05)	Loss 1.4083e+00 (1.5294e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][2801/3336]	Time  0.649 ( 0.656)	Data  0.000 ( 0.002)	max lr 8.5180e-05 (7.2576e-05)	min lr 8.5180e-05 (7.2576e-05)	Loss 1.5096e+00 (1.5269e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][3001/3336]	Time  0.650 ( 0.656)	Data  0.000 ( 0.002)	max lr 8.6978e-05 (7.3476e-05)	min lr 8.6978e-05 (7.3476e-05)	Loss 1.5957e+00 (1.5246e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [2][3201/3336]	Time  0.648 ( 0.656)	Data  0.000 ( 0.002)	max lr 8.8777e-05 (7.4375e-05)	min lr 8.8777e-05 (7.4375e-05)	Loss 1.4412e+00 (1.5220e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 18:07:39,138 - train_accuracy: 0.0000
+2026-04-26 18:07:39,139 - train_total: 1281024.0000
+2026-04-26 18:07:39,139 - train_correct: 0.0000
+2026-04-26 18:08:24,383 - val_accuracy: 1.0000
+2026-04-26 18:08:24,383 - eval_accuracy: 0.1419
+2026-04-26 18:08:24,383 - eval_total: 49920.0000
+2026-04-26 18:08:24,383 - eval_correct: 7082.0000
+Epoch: [3][   1/3336]	Time  4.699 ( 4.699)	Data  4.050 ( 4.050)	max lr 9.0000e-05 (9.0000e-05)	min lr 9.0000e-05 (9.0000e-05)	Loss 1.5335e+00 (1.5335e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][ 201/3336]	Time  0.653 ( 0.675)	Data  0.000 ( 0.021)	max lr 9.1799e-05 (9.0886e-05)	min lr 9.1799e-05 (9.0886e-05)	Loss 1.5835e+00 (1.4767e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][ 401/3336]	Time  0.651 ( 0.666)	Data  0.001 ( 0.011)	max lr 9.3597e-05 (9.1785e-05)	min lr 9.3597e-05 (9.1785e-05)	Loss 1.4509e+00 (1.4752e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][ 601/3336]	Time  0.652 ( 0.662)	Data  0.000 ( 0.007)	max lr 9.5396e-05 (9.2684e-05)	min lr 9.5396e-05 (9.2684e-05)	Loss 1.3398e+00 (1.4717e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][ 801/3336]	Time  0.644 ( 0.660)	Data  0.000 ( 0.006)	max lr 9.7194e-05 (9.3584e-05)	min lr 9.7194e-05 (9.3584e-05)	Loss 1.5418e+00 (1.4735e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][1001/3336]	Time  0.647 ( 0.659)	Data  0.000 ( 0.005)	max lr 9.8993e-05 (9.4483e-05)	min lr 9.8993e-05 (9.4483e-05)	Loss 1.4075e+00 (1.4693e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][1201/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.004)	max lr 1.0079e-04 (9.5382e-05)	min lr 1.0079e-04 (9.5382e-05)	Loss 1.5494e+00 (1.4681e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][1401/3336]	Time  0.656 ( 0.658)	Data  0.000 ( 0.004)	max lr 1.0259e-04 (9.6281e-05)	min lr 1.0259e-04 (9.6281e-05)	Loss 1.4591e+00 (1.4658e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][1601/3336]	Time  0.645 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.0439e-04 (9.7181e-05)	min lr 1.0439e-04 (9.7181e-05)	Loss 1.5097e+00 (1.4658e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][1801/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.0619e-04 (9.8080e-05)	min lr 1.0619e-04 (9.8080e-05)	Loss 1.3063e+00 (1.4644e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][2001/3336]	Time  0.648 ( 0.657)	Data  0.001 ( 0.003)	max lr 1.0799e-04 (9.8979e-05)	min lr 1.0799e-04 (9.8979e-05)	Loss 1.4722e+00 (1.4616e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][2201/3336]	Time  0.648 ( 0.657)	Data  0.000 ( 0.003)	max lr 1.0978e-04 (9.9879e-05)	min lr 1.0978e-04 (9.9879e-05)	Loss 1.3002e+00 (1.4600e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][2401/3336]	Time  0.650 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.1158e-04 (1.0078e-04)	min lr 1.1158e-04 (1.0078e-04)	Loss 1.5520e+00 (1.4569e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][2601/3336]	Time  0.651 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.1338e-04 (1.0168e-04)	min lr 1.1338e-04 (1.0168e-04)	Loss 1.3994e+00 (1.4553e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][2801/3336]	Time  0.651 ( 0.657)	Data  0.001 ( 0.002)	max lr 1.1518e-04 (1.0258e-04)	min lr 1.1518e-04 (1.0258e-04)	Loss 1.4281e+00 (1.4533e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][3001/3336]	Time  0.648 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.1698e-04 (1.0348e-04)	min lr 1.1698e-04 (1.0348e-04)	Loss 1.5238e+00 (1.4516e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [3][3201/3336]	Time  0.650 ( 0.657)	Data  0.001 ( 0.002)	max lr 1.1878e-04 (1.0438e-04)	min lr 1.1878e-04 (1.0438e-04)	Loss 1.5001e+00 (1.4500e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 18:44:54,801 - train_accuracy: 0.0000
+2026-04-26 18:44:54,808 - train_total: 1281024.0000
+2026-04-26 18:44:54,808 - train_correct: 0.0000
+2026-04-26 18:45:46,015 - val_accuracy: 1.0000
+2026-04-26 18:45:46,015 - eval_accuracy: 0.2331
+2026-04-26 18:45:46,015 - eval_total: 49920.0000
+2026-04-26 18:45:46,015 - eval_correct: 11635.0000
+Epoch: [4][   1/3336]	Time  4.535 ( 4.535)	Data  3.890 ( 3.890)	max lr 1.2000e-04 (1.2000e-04)	min lr 1.2000e-04 (1.2000e-04)	Loss 1.5035e+00 (1.5035e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][ 201/3336]	Time  0.653 ( 0.678)	Data  0.000 ( 0.020)	max lr 1.2180e-04 (1.2089e-04)	min lr 1.2180e-04 (1.2089e-04)	Loss 1.2117e+00 (1.4014e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][ 401/3336]	Time  0.652 ( 0.668)	Data  0.000 ( 0.010)	max lr 1.2360e-04 (1.2179e-04)	min lr 1.2360e-04 (1.2179e-04)	Loss 1.3070e+00 (1.3982e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][ 601/3336]	Time  6.084 ( 0.678)	Data  5.439 ( 0.022)	max lr 1.2540e-04 (1.2268e-04)	min lr 1.2540e-04 (1.2268e-04)	Loss 1.2175e+00 (1.3963e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][ 801/3336]	Time  0.654 ( 0.721)	Data  0.000 ( 0.065)	max lr 1.2719e-04 (1.2358e-04)	min lr 1.2719e-04 (1.2358e-04)	Loss 1.4225e+00 (1.3972e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][1001/3336]	Time  0.655 ( 0.741)	Data  0.000 ( 0.085)	max lr 1.2899e-04 (1.2448e-04)	min lr 1.2899e-04 (1.2448e-04)	Loss 1.4874e+00 (1.3946e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][1201/3336]	Time  0.652 ( 0.727)	Data  0.000 ( 0.071)	max lr 1.3079e-04 (1.2538e-04)	min lr 1.3079e-04 (1.2538e-04)	Loss 1.5191e+00 (1.3937e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][1401/3336]	Time  0.646 ( 0.743)	Data  0.000 ( 0.087)	max lr 1.3259e-04 (1.2628e-04)	min lr 1.3259e-04 (1.2628e-04)	Loss 1.4648e+00 (1.3923e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][1601/3336]	Time  0.653 ( 0.744)	Data  0.000 ( 0.087)	max lr 1.3439e-04 (1.2718e-04)	min lr 1.3439e-04 (1.2718e-04)	Loss 1.4934e+00 (1.3898e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][1801/3336]	Time  0.658 ( 0.750)	Data  0.000 ( 0.094)	max lr 1.3619e-04 (1.2808e-04)	min lr 1.3619e-04 (1.2808e-04)	Loss 1.4449e+00 (1.3873e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][2001/3336]	Time  0.647 ( 0.741)	Data  0.000 ( 0.084)	max lr 1.3799e-04 (1.2898e-04)	min lr 1.3799e-04 (1.2898e-04)	Loss 1.4469e+00 (1.3864e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][2201/3336]	Time  0.648 ( 0.733)	Data  0.000 ( 0.077)	max lr 1.3978e-04 (1.2988e-04)	min lr 1.3978e-04 (1.2988e-04)	Loss 1.3146e+00 (1.3832e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][2401/3336]	Time  0.648 ( 0.727)	Data  0.000 ( 0.070)	max lr 1.4158e-04 (1.3078e-04)	min lr 1.4158e-04 (1.3078e-04)	Loss 1.2428e+00 (1.3808e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][2601/3336]	Time  0.647 ( 0.721)	Data  0.000 ( 0.065)	max lr 1.4338e-04 (1.3168e-04)	min lr 1.4338e-04 (1.3168e-04)	Loss 1.4396e+00 (1.3799e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][2801/3336]	Time  0.656 ( 0.717)	Data  0.000 ( 0.060)	max lr 1.4518e-04 (1.3258e-04)	min lr 1.4518e-04 (1.3258e-04)	Loss 1.2975e+00 (1.3776e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][3001/3336]	Time  0.650 ( 0.713)	Data  0.001 ( 0.056)	max lr 1.4698e-04 (1.3348e-04)	min lr 1.4698e-04 (1.3348e-04)	Loss 1.4260e+00 (1.3755e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [4][3201/3336]	Time  0.649 ( 0.709)	Data  0.000 ( 0.053)	max lr 1.4878e-04 (1.3438e-04)	min lr 1.4878e-04 (1.3438e-04)	Loss 1.4520e+00 (1.3730e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 19:25:04,073 - train_accuracy: 0.0000
+2026-04-26 19:25:04,074 - train_total: 1281024.0000
+2026-04-26 19:25:04,074 - train_correct: 0.0000
+2026-04-26 19:25:48,536 - val_accuracy: 1.0000
+2026-04-26 19:25:48,536 - eval_accuracy: 0.3217
+2026-04-26 19:25:48,536 - eval_total: 49920.0000
+2026-04-26 19:25:48,536 - eval_correct: 16061.0000
+Epoch: [5][   1/3336]	Time  5.151 ( 5.151)	Data  4.510 ( 4.510)	max lr 1.5000e-04 (1.5000e-04)	min lr 1.5000e-04 (1.5000e-04)	Loss 1.5114e+00 (1.5114e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][ 201/3336]	Time  0.652 ( 0.680)	Data  0.000 ( 0.023)	max lr 1.5180e-04 (1.5089e-04)	min lr 1.5180e-04 (1.5089e-04)	Loss 1.4319e+00 (1.3327e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][ 401/3336]	Time  0.649 ( 0.668)	Data  0.000 ( 0.012)	max lr 1.5360e-04 (1.5179e-04)	min lr 1.5360e-04 (1.5179e-04)	Loss 1.4439e+00 (1.3356e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][ 601/3336]	Time  0.652 ( 0.664)	Data  0.000 ( 0.008)	max lr 1.5540e-04 (1.5268e-04)	min lr 1.5540e-04 (1.5268e-04)	Loss 1.3036e+00 (1.3357e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][ 801/3336]	Time  0.648 ( 0.662)	Data  0.001 ( 0.006)	max lr 1.5719e-04 (1.5358e-04)	min lr 1.5719e-04 (1.5358e-04)	Loss 1.4371e+00 (1.3359e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][1001/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 1.5899e-04 (1.5448e-04)	min lr 1.5899e-04 (1.5448e-04)	Loss 1.1781e+00 (1.3343e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][1201/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.004)	max lr 1.6079e-04 (1.5538e-04)	min lr 1.6079e-04 (1.5538e-04)	Loss 1.3981e+00 (1.3303e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][1401/3336]	Time  0.648 ( 0.659)	Data  0.000 ( 0.004)	max lr 1.6259e-04 (1.5628e-04)	min lr 1.6259e-04 (1.5628e-04)	Loss 1.4221e+00 (1.3279e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][1601/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.004)	max lr 1.6439e-04 (1.5718e-04)	min lr 1.6439e-04 (1.5718e-04)	Loss 1.2211e+00 (1.3255e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][1801/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.6619e-04 (1.5808e-04)	min lr 1.6619e-04 (1.5808e-04)	Loss 1.3846e+00 (1.3219e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][2001/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.6799e-04 (1.5898e-04)	min lr 1.6799e-04 (1.5898e-04)	Loss 1.4480e+00 (1.3195e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][2201/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.6978e-04 (1.5988e-04)	min lr 1.6978e-04 (1.5988e-04)	Loss 1.4646e+00 (1.3188e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][2401/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.7158e-04 (1.6078e-04)	min lr 1.7158e-04 (1.6078e-04)	Loss 1.3936e+00 (1.3158e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][2601/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 1.7338e-04 (1.6168e-04)	min lr 1.7338e-04 (1.6168e-04)	Loss 1.3965e+00 (1.3146e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][2801/3336]	Time  0.650 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.7518e-04 (1.6258e-04)	min lr 1.7518e-04 (1.6258e-04)	Loss 1.0688e+00 (1.3127e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][3001/3336]	Time  0.651 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.7698e-04 (1.6348e-04)	min lr 1.7698e-04 (1.6348e-04)	Loss 1.4126e+00 (1.3112e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [5][3201/3336]	Time  0.647 ( 0.657)	Data  0.000 ( 0.002)	max lr 1.7878e-04 (1.6438e-04)	min lr 1.7878e-04 (1.6438e-04)	Loss 1.2987e+00 (1.3089e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 20:02:21,158 - train_accuracy: 0.0000
+2026-04-26 20:02:21,159 - train_total: 1281024.0000
+2026-04-26 20:02:21,159 - train_correct: 0.0000
+2026-04-26 20:03:19,022 - val_accuracy: 1.0000
+2026-04-26 20:03:19,022 - eval_accuracy: 0.3949
+2026-04-26 20:03:19,022 - eval_total: 49920.0000
+2026-04-26 20:03:19,022 - eval_correct: 19714.0000
+Epoch: [6][   1/3336]	Time  4.436 ( 4.436)	Data  3.788 ( 3.788)	max lr 1.8000e-04 (1.8000e-04)	min lr 1.8000e-04 (1.8000e-04)	Loss 1.2976e+00 (1.2976e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][ 201/3336]	Time  0.653 ( 0.678)	Data  0.000 ( 0.021)	max lr 1.8180e-04 (1.8089e-04)	min lr 1.8180e-04 (1.8089e-04)	Loss 1.3536e+00 (1.2691e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][ 401/3336]	Time  0.653 ( 0.668)	Data  0.000 ( 0.011)	max lr 1.8360e-04 (1.8179e-04)	min lr 1.8360e-04 (1.8179e-04)	Loss 1.1256e+00 (1.2661e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][ 601/3336]	Time  0.651 ( 0.664)	Data  0.000 ( 0.007)	max lr 1.8540e-04 (1.8268e-04)	min lr 1.8540e-04 (1.8268e-04)	Loss 1.3073e+00 (1.2679e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][ 801/3336]	Time  0.653 ( 0.662)	Data  0.000 ( 0.006)	max lr 1.8719e-04 (1.8358e-04)	min lr 1.8719e-04 (1.8358e-04)	Loss 1.0027e+00 (1.2632e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][1001/3336]	Time  0.653 ( 0.661)	Data  0.000 ( 0.005)	max lr 1.8899e-04 (1.8448e-04)	min lr 1.8899e-04 (1.8448e-04)	Loss 1.2708e+00 (1.2628e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][1201/3336]	Time  0.651 ( 0.660)	Data  0.000 ( 0.004)	max lr 1.9079e-04 (1.8538e-04)	min lr 1.9079e-04 (1.8538e-04)	Loss 1.1210e+00 (1.2598e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][1401/3336]	Time  0.652 ( 0.660)	Data  0.000 ( 0.004)	max lr 1.9259e-04 (1.8628e-04)	min lr 1.9259e-04 (1.8628e-04)	Loss 1.1318e+00 (1.2582e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][1601/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 1.9439e-04 (1.8718e-04)	min lr 1.9439e-04 (1.8718e-04)	Loss 1.3091e+00 (1.2588e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][1801/3336]	Time  0.653 ( 0.659)	Data  0.000 ( 0.003)	max lr 1.9619e-04 (1.8808e-04)	min lr 1.9619e-04 (1.8808e-04)	Loss 1.2045e+00 (1.2568e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][2001/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.9799e-04 (1.8898e-04)	min lr 1.9799e-04 (1.8898e-04)	Loss 1.3543e+00 (1.2554e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][2201/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.003)	max lr 1.9978e-04 (1.8988e-04)	min lr 1.9978e-04 (1.8988e-04)	Loss 1.4137e+00 (1.2543e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][2401/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.0158e-04 (1.9078e-04)	min lr 2.0158e-04 (1.9078e-04)	Loss 1.4386e+00 (1.2548e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][2601/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.0338e-04 (1.9168e-04)	min lr 2.0338e-04 (1.9168e-04)	Loss 1.0393e+00 (1.2528e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][2801/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.0518e-04 (1.9258e-04)	min lr 2.0518e-04 (1.9258e-04)	Loss 1.3569e+00 (1.2516e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][3001/3336]	Time  0.654 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.0698e-04 (1.9348e-04)	min lr 2.0698e-04 (1.9348e-04)	Loss 1.4406e+00 (1.2519e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [6][3201/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.0878e-04 (1.9438e-04)	min lr 2.0878e-04 (1.9438e-04)	Loss 1.0840e+00 (1.2509e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 20:39:52,923 - train_accuracy: 0.0000
+2026-04-26 20:39:52,923 - train_total: 1281024.0000
+2026-04-26 20:39:52,924 - train_correct: 0.0000
+2026-04-26 20:40:38,623 - val_accuracy: 1.0000
+2026-04-26 20:40:38,624 - eval_accuracy: 0.4514
+2026-04-26 20:40:38,624 - eval_total: 49920.0000
+2026-04-26 20:40:38,624 - eval_correct: 22535.0000
+Epoch: [7][   1/3336]	Time  4.996 ( 4.996)	Data  4.350 ( 4.350)	max lr 2.1000e-04 (2.1000e-04)	min lr 2.1000e-04 (2.1000e-04)	Loss 9.4850e-01 (9.4850e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [7][ 201/3336]	Time  0.655 ( 0.680)	Data  0.001 ( 0.022)	max lr 2.1180e-04 (2.1089e-04)	min lr 2.1180e-04 (2.1089e-04)	Loss 1.3677e+00 (1.2038e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][ 401/3336]	Time  0.648 ( 0.668)	Data  0.000 ( 0.012)	max lr 2.1360e-04 (2.1179e-04)	min lr 2.1360e-04 (2.1179e-04)	Loss 1.2822e+00 (1.2111e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][ 601/3336]	Time  0.648 ( 0.664)	Data  0.001 ( 0.008)	max lr 2.1540e-04 (2.1268e-04)	min lr 2.1540e-04 (2.1268e-04)	Loss 1.3372e+00 (1.2148e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][ 801/3336]	Time  0.650 ( 0.663)	Data  0.000 ( 0.006)	max lr 2.1719e-04 (2.1358e-04)	min lr 2.1719e-04 (2.1358e-04)	Loss 1.1400e+00 (1.2131e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][1001/3336]	Time  0.651 ( 0.662)	Data  0.000 ( 0.005)	max lr 2.1899e-04 (2.1448e-04)	min lr 2.1899e-04 (2.1448e-04)	Loss 1.2830e+00 (1.2155e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][1201/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.004)	max lr 2.2079e-04 (2.1538e-04)	min lr 2.2079e-04 (2.1538e-04)	Loss 1.2934e+00 (1.2154e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][1401/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.2259e-04 (2.1628e-04)	min lr 2.2259e-04 (2.1628e-04)	Loss 1.3021e+00 (1.2149e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][1601/3336]	Time  0.651 ( 0.660)	Data  0.000 ( 0.003)	max lr 2.2439e-04 (2.1718e-04)	min lr 2.2439e-04 (2.1718e-04)	Loss 9.7578e-01 (1.2143e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][1801/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.2619e-04 (2.1808e-04)	min lr 2.2619e-04 (2.1808e-04)	Loss 1.2039e+00 (1.2144e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][2001/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.2799e-04 (2.1898e-04)	min lr 2.2799e-04 (2.1898e-04)	Loss 1.1297e+00 (1.2121e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][2201/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.2978e-04 (2.1988e-04)	min lr 2.2978e-04 (2.1988e-04)	Loss 1.1530e+00 (1.2114e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][2401/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.3158e-04 (2.2078e-04)	min lr 2.3158e-04 (2.2078e-04)	Loss 1.1161e+00 (1.2095e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][2601/3336]	Time  0.654 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.3338e-04 (2.2168e-04)	min lr 2.3338e-04 (2.2168e-04)	Loss 1.2190e+00 (1.2081e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][2801/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.3518e-04 (2.2258e-04)	min lr 2.3518e-04 (2.2258e-04)	Loss 1.1958e+00 (1.2071e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][3001/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.3698e-04 (2.2348e-04)	min lr 2.3698e-04 (2.2348e-04)	Loss 1.0576e+00 (1.2049e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [7][3201/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.3878e-04 (2.2438e-04)	min lr 2.3878e-04 (2.2438e-04)	Loss 1.3046e+00 (1.2036e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 21:17:13,452 - train_accuracy: 0.0000
+2026-04-26 21:17:13,453 - train_total: 1281024.0000
+2026-04-26 21:17:13,453 - train_correct: 0.0000
+2026-04-26 21:17:58,793 - val_accuracy: 1.0000
+2026-04-26 21:17:58,793 - eval_accuracy: 0.4927
+2026-04-26 21:17:58,793 - eval_total: 49920.0000
+2026-04-26 21:17:58,793 - eval_correct: 24594.0000
+Epoch: [8][   1/3336]	Time  3.600 ( 3.600)	Data  2.954 ( 2.954)	max lr 2.4000e-04 (2.4000e-04)	min lr 2.4000e-04 (2.4000e-04)	Loss 1.2252e+00 (1.2252e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][ 201/3336]	Time  0.657 ( 0.675)	Data  0.000 ( 0.018)	max lr 2.4180e-04 (2.4089e-04)	min lr 2.4180e-04 (2.4089e-04)	Loss 9.3540e-01 (1.1672e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][ 401/3336]	Time  0.649 ( 0.666)	Data  0.000 ( 0.009)	max lr 2.4360e-04 (2.4179e-04)	min lr 2.4360e-04 (2.4179e-04)	Loss 1.0893e+00 (1.1712e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][ 601/3336]	Time  0.652 ( 0.663)	Data  0.000 ( 0.006)	max lr 2.4540e-04 (2.4268e-04)	min lr 2.4540e-04 (2.4268e-04)	Loss 9.6201e-01 (1.1779e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][ 801/3336]	Time  0.647 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.4719e-04 (2.4358e-04)	min lr 2.4719e-04 (2.4358e-04)	Loss 1.2563e+00 (1.1779e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][1001/3336]	Time  0.653 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.4899e-04 (2.4448e-04)	min lr 2.4899e-04 (2.4448e-04)	Loss 1.1545e+00 (1.1779e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][1201/3336]	Time  0.653 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.5079e-04 (2.4538e-04)	min lr 2.5079e-04 (2.4538e-04)	Loss 1.2442e+00 (1.1786e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][1401/3336]	Time  0.655 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.5259e-04 (2.4628e-04)	min lr 2.5259e-04 (2.4628e-04)	Loss 9.4593e-01 (1.1770e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][1601/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.5439e-04 (2.4718e-04)	min lr 2.5439e-04 (2.4718e-04)	Loss 9.8305e-01 (1.1748e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][1801/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.5619e-04 (2.4808e-04)	min lr 2.5619e-04 (2.4808e-04)	Loss 8.8727e-01 (1.1718e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][2001/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.5799e-04 (2.4898e-04)	min lr 2.5799e-04 (2.4898e-04)	Loss 1.2414e+00 (1.1701e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][2201/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.5978e-04 (2.4988e-04)	min lr 2.5978e-04 (2.4988e-04)	Loss 1.3004e+00 (1.1690e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][2401/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.6158e-04 (2.5078e-04)	min lr 2.6158e-04 (2.5078e-04)	Loss 1.2008e+00 (1.1684e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][2601/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.6338e-04 (2.5168e-04)	min lr 2.6338e-04 (2.5168e-04)	Loss 1.1349e+00 (1.1682e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][2801/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.6518e-04 (2.5258e-04)	min lr 2.6518e-04 (2.5258e-04)	Loss 1.2437e+00 (1.1665e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][3001/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.6698e-04 (2.5348e-04)	min lr 2.6698e-04 (2.5348e-04)	Loss 1.1176e+00 (1.1649e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [8][3201/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.6878e-04 (2.5438e-04)	min lr 2.6878e-04 (2.5438e-04)	Loss 1.3055e+00 (1.1637e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 21:54:33,394 - train_accuracy: 0.0000
+2026-04-26 21:54:33,395 - train_total: 1281024.0000
+2026-04-26 21:54:33,395 - train_correct: 0.0000
+2026-04-26 21:55:18,040 - val_accuracy: 1.0000
+2026-04-26 21:55:18,041 - eval_accuracy: 0.5325
+2026-04-26 21:55:18,041 - eval_total: 49920.0000
+2026-04-26 21:55:18,041 - eval_correct: 26582.0000
+Epoch: [9][   1/3336]	Time  4.027 ( 4.027)	Data  3.380 ( 3.380)	max lr 2.7000e-04 (2.7000e-04)	min lr 2.7000e-04 (2.7000e-04)	Loss 1.1406e+00 (1.1406e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][ 201/3336]	Time  0.655 ( 0.675)	Data  0.000 ( 0.017)	max lr 2.7180e-04 (2.7089e-04)	min lr 2.7180e-04 (2.7089e-04)	Loss 1.2434e+00 (1.1371e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][ 401/3336]	Time  0.652 ( 0.666)	Data  0.000 ( 0.009)	max lr 2.7360e-04 (2.7179e-04)	min lr 2.7360e-04 (2.7179e-04)	Loss 1.2579e+00 (1.1384e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][ 601/3336]	Time  0.651 ( 0.663)	Data  0.000 ( 0.006)	max lr 2.7540e-04 (2.7268e-04)	min lr 2.7540e-04 (2.7268e-04)	Loss 1.0759e+00 (1.1402e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][ 801/3336]	Time  0.652 ( 0.661)	Data  0.001 ( 0.005)	max lr 2.7719e-04 (2.7358e-04)	min lr 2.7719e-04 (2.7358e-04)	Loss 1.1813e+00 (1.1381e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][1001/3336]	Time  0.652 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.7899e-04 (2.7448e-04)	min lr 2.7899e-04 (2.7448e-04)	Loss 1.2454e+00 (1.1377e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][1201/3336]	Time  0.651 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.8079e-04 (2.7538e-04)	min lr 2.8079e-04 (2.7538e-04)	Loss 1.2591e+00 (1.1364e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][1401/3336]	Time  0.648 ( 0.659)	Data  0.001 ( 0.003)	max lr 2.8259e-04 (2.7628e-04)	min lr 2.8259e-04 (2.7628e-04)	Loss 1.2457e+00 (1.1368e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][1601/3336]	Time  0.648 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.8439e-04 (2.7718e-04)	min lr 2.8439e-04 (2.7718e-04)	Loss 1.3017e+00 (1.1388e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][1801/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.8619e-04 (2.7808e-04)	min lr 2.8619e-04 (2.7808e-04)	Loss 8.5696e-01 (1.1382e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][2001/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.8799e-04 (2.7898e-04)	min lr 2.8799e-04 (2.7898e-04)	Loss 9.4624e-01 (1.1366e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][2201/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.8978e-04 (2.7988e-04)	min lr 2.8978e-04 (2.7988e-04)	Loss 1.2155e+00 (1.1368e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][2401/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9158e-04 (2.8078e-04)	min lr 2.9158e-04 (2.8078e-04)	Loss 1.1592e+00 (1.1363e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][2601/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9338e-04 (2.8168e-04)	min lr 2.9338e-04 (2.8168e-04)	Loss 1.3201e+00 (1.1357e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][2801/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9518e-04 (2.8258e-04)	min lr 2.9518e-04 (2.8258e-04)	Loss 1.1965e+00 (1.1348e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][3001/3336]	Time  0.653 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9698e-04 (2.8348e-04)	min lr 2.9698e-04 (2.8348e-04)	Loss 1.0807e+00 (1.1331e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [9][3201/3336]	Time  0.651 ( 0.658)	Data  0.001 ( 0.002)	max lr 2.9878e-04 (2.8438e-04)	min lr 2.9878e-04 (2.8438e-04)	Loss 1.2157e+00 (1.1320e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 22:31:52,062 - train_accuracy: 0.0000
+2026-04-26 22:31:52,063 - train_total: 1281024.0000
+2026-04-26 22:31:52,063 - train_correct: 0.0000
+2026-04-26 22:32:37,513 - val_accuracy: 1.0000
+2026-04-26 22:32:37,513 - eval_accuracy: 0.5585
+2026-04-26 22:32:37,513 - eval_total: 49920.0000
+2026-04-26 22:32:37,513 - eval_correct: 27882.0000
+Epoch: [10][   1/3336]	Time  5.280 ( 5.280)	Data  4.637 ( 4.637)	max lr 3.0000e-04 (3.0000e-04)	min lr 3.0000e-04 (3.0000e-04)	Loss 1.2016e+00 (1.2016e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][ 201/3336]	Time  0.651 ( 0.682)	Data  0.001 ( 0.024)	max lr 3.0000e-04 (3.0000e-04)	min lr 3.0000e-04 (3.0000e-04)	Loss 1.2224e+00 (1.0963e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][ 401/3336]	Time  0.650 ( 0.670)	Data  0.000 ( 0.012)	max lr 3.0000e-04 (3.0000e-04)	min lr 3.0000e-04 (3.0000e-04)	Loss 8.5763e-01 (1.0972e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][ 601/3336]	Time  0.651 ( 0.666)	Data  0.000 ( 0.008)	max lr 3.0000e-04 (3.0000e-04)	min lr 3.0000e-04 (3.0000e-04)	Loss 1.1695e+00 (1.1008e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][ 801/3336]	Time  0.654 ( 0.664)	Data  0.000 ( 0.006)	max lr 2.9999e-04 (3.0000e-04)	min lr 2.9999e-04 (3.0000e-04)	Loss 1.1784e+00 (1.1013e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][1001/3336]	Time  0.648 ( 0.662)	Data  0.000 ( 0.005)	max lr 2.9999e-04 (3.0000e-04)	min lr 2.9999e-04 (3.0000e-04)	Loss 1.2055e+00 (1.1036e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][1201/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9999e-04 (3.0000e-04)	min lr 2.9999e-04 (3.0000e-04)	Loss 9.6284e-01 (1.1025e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][1401/3336]	Time  0.650 ( 0.661)	Data  0.001 ( 0.004)	max lr 2.9998e-04 (2.9999e-04)	min lr 2.9998e-04 (2.9999e-04)	Loss 1.0988e+00 (1.1006e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][1601/3336]	Time  0.650 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9998e-04 (2.9999e-04)	min lr 2.9998e-04 (2.9999e-04)	Loss 1.0862e+00 (1.1029e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][1801/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.003)	max lr 2.9997e-04 (2.9999e-04)	min lr 2.9997e-04 (2.9999e-04)	Loss 1.0061e+00 (1.1023e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][2001/3336]	Time  0.655 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9997e-04 (2.9999e-04)	min lr 2.9997e-04 (2.9999e-04)	Loss 1.1694e+00 (1.1011e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][2201/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9996e-04 (2.9999e-04)	min lr 2.9996e-04 (2.9999e-04)	Loss 1.1704e+00 (1.1003e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][2401/3336]	Time  0.653 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9995e-04 (2.9998e-04)	min lr 2.9995e-04 (2.9998e-04)	Loss 8.9680e-01 (1.0995e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][2601/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.002)	max lr 2.9994e-04 (2.9998e-04)	min lr 2.9994e-04 (2.9998e-04)	Loss 8.1754e-01 (1.1003e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][2801/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.002)	max lr 2.9994e-04 (2.9998e-04)	min lr 2.9994e-04 (2.9998e-04)	Loss 1.1194e+00 (1.1004e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][3001/3336]	Time  0.654 ( 0.658)	Data  0.001 ( 0.002)	max lr 2.9993e-04 (2.9998e-04)	min lr 2.9993e-04 (2.9998e-04)	Loss 1.2642e+00 (1.0993e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [10][3201/3336]	Time  0.647 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9992e-04 (2.9997e-04)	min lr 2.9992e-04 (2.9997e-04)	Loss 1.0650e+00 (1.0985e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 23:09:15,206 - train_accuracy: 0.0000
+2026-04-26 23:09:15,207 - train_total: 1281024.0000
+2026-04-26 23:09:15,207 - train_correct: 0.0000
+2026-04-26 23:10:13,784 - val_accuracy: 1.0000
+2026-04-26 23:10:13,784 - eval_accuracy: 0.5883
+2026-04-26 23:10:13,784 - eval_total: 49920.0000
+2026-04-26 23:10:13,784 - eval_correct: 29370.0000
+Epoch: [11][   1/3336]	Time  4.197 ( 4.197)	Data  3.550 ( 3.550)	max lr 2.9991e-04 (2.9991e-04)	min lr 2.9991e-04 (2.9991e-04)	Loss 1.0977e+00 (1.0977e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][ 201/3336]	Time  0.656 ( 0.679)	Data  0.000 ( 0.020)	max lr 2.9990e-04 (2.9990e-04)	min lr 2.9990e-04 (2.9990e-04)	Loss 1.0386e+00 (1.0844e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][ 401/3336]	Time  0.653 ( 0.669)	Data  0.000 ( 0.010)	max lr 2.9989e-04 (2.9990e-04)	min lr 2.9989e-04 (2.9990e-04)	Loss 1.2442e+00 (1.0807e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][ 601/3336]	Time  0.649 ( 0.665)	Data  0.000 ( 0.007)	max lr 2.9987e-04 (2.9989e-04)	min lr 2.9987e-04 (2.9989e-04)	Loss 8.0313e-01 (1.0771e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][ 801/3336]	Time  0.651 ( 0.663)	Data  0.000 ( 0.005)	max lr 2.9986e-04 (2.9989e-04)	min lr 2.9986e-04 (2.9989e-04)	Loss 8.8898e-01 (1.0718e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][1001/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9985e-04 (2.9988e-04)	min lr 2.9985e-04 (2.9988e-04)	Loss 1.2220e+00 (1.0731e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][1201/3336]	Time  0.655 ( 0.661)	Data  0.000 ( 0.004)	max lr 2.9983e-04 (2.9987e-04)	min lr 2.9983e-04 (2.9987e-04)	Loss 1.2623e+00 (1.0744e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][1401/3336]	Time  0.651 ( 0.660)	Data  0.001 ( 0.003)	max lr 2.9982e-04 (2.9987e-04)	min lr 2.9982e-04 (2.9987e-04)	Loss 1.2408e+00 (1.0747e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][1601/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9980e-04 (2.9986e-04)	min lr 2.9980e-04 (2.9986e-04)	Loss 1.2797e+00 (1.0746e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][1801/3336]	Time  0.656 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9978e-04 (2.9985e-04)	min lr 2.9978e-04 (2.9985e-04)	Loss 1.1294e+00 (1.0741e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][2001/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9977e-04 (2.9984e-04)	min lr 2.9977e-04 (2.9984e-04)	Loss 1.2165e+00 (1.0737e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][2201/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.002)	max lr 2.9975e-04 (2.9984e-04)	min lr 2.9975e-04 (2.9984e-04)	Loss 7.7085e-01 (1.0739e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][2401/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9973e-04 (2.9983e-04)	min lr 2.9973e-04 (2.9983e-04)	Loss 1.2672e+00 (1.0743e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][2601/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9971e-04 (2.9982e-04)	min lr 2.9971e-04 (2.9982e-04)	Loss 1.1319e+00 (1.0735e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][2801/3336]	Time  0.646 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9969e-04 (2.9981e-04)	min lr 2.9969e-04 (2.9981e-04)	Loss 1.0527e+00 (1.0728e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][3001/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9967e-04 (2.9980e-04)	min lr 2.9967e-04 (2.9980e-04)	Loss 9.5519e-01 (1.0716e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [11][3201/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9965e-04 (2.9979e-04)	min lr 2.9965e-04 (2.9979e-04)	Loss 9.7103e-01 (1.0715e+00)	Max mem (MiB) 58685 (58685)
+2026-04-26 23:46:48,654 - train_accuracy: 0.0000
+2026-04-26 23:46:48,655 - train_total: 1281024.0000
+2026-04-26 23:46:48,655 - train_correct: 0.0000
+2026-04-26 23:47:33,623 - val_accuracy: 1.0000
+2026-04-26 23:47:33,623 - eval_accuracy: 0.6067
+2026-04-26 23:47:33,623 - eval_total: 49920.0000
+2026-04-26 23:47:33,623 - eval_correct: 30285.0000
+Epoch: [12][   1/3336]	Time  3.804 ( 3.804)	Data  3.154 ( 3.154)	max lr 2.9964e-04 (2.9964e-04)	min lr 2.9964e-04 (2.9964e-04)	Loss 1.2687e+00 (1.2687e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][ 201/3336]	Time  0.652 ( 0.674)	Data  0.000 ( 0.016)	max lr 2.9961e-04 (2.9962e-04)	min lr 2.9961e-04 (2.9962e-04)	Loss 1.0930e+00 (1.0731e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][ 401/3336]	Time  0.651 ( 0.665)	Data  0.000 ( 0.009)	max lr 2.9959e-04 (2.9961e-04)	min lr 2.9959e-04 (2.9961e-04)	Loss 9.7181e-01 (1.0616e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][ 601/3336]	Time  0.651 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9957e-04 (2.9960e-04)	min lr 2.9957e-04 (2.9960e-04)	Loss 1.2225e+00 (1.0539e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][ 801/3336]	Time  0.650 ( 0.661)	Data  0.001 ( 0.005)	max lr 2.9954e-04 (2.9959e-04)	min lr 2.9954e-04 (2.9959e-04)	Loss 7.7850e-01 (1.0498e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][1001/3336]	Time  0.651 ( 0.660)	Data  0.001 ( 0.004)	max lr 2.9952e-04 (2.9958e-04)	min lr 2.9952e-04 (2.9958e-04)	Loss 9.0700e-01 (1.0528e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][1201/3336]	Time  0.648 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9949e-04 (2.9957e-04)	min lr 2.9949e-04 (2.9957e-04)	Loss 1.0749e+00 (1.0528e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][1401/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9947e-04 (2.9955e-04)	min lr 2.9947e-04 (2.9955e-04)	Loss 9.7041e-01 (1.0526e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][1601/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9944e-04 (2.9954e-04)	min lr 2.9944e-04 (2.9954e-04)	Loss 9.6745e-01 (1.0538e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][1801/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9941e-04 (2.9953e-04)	min lr 2.9941e-04 (2.9953e-04)	Loss 9.6330e-01 (1.0532e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][2001/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9938e-04 (2.9952e-04)	min lr 2.9938e-04 (2.9952e-04)	Loss 1.2243e+00 (1.0503e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][2201/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9936e-04 (2.9950e-04)	min lr 2.9936e-04 (2.9950e-04)	Loss 9.9970e-01 (1.0489e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][2401/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9933e-04 (2.9949e-04)	min lr 2.9933e-04 (2.9949e-04)	Loss 1.1196e+00 (1.0469e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][2601/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9930e-04 (2.9948e-04)	min lr 2.9930e-04 (2.9948e-04)	Loss 1.0485e+00 (1.0458e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][2801/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9927e-04 (2.9946e-04)	min lr 2.9927e-04 (2.9946e-04)	Loss 1.1215e+00 (1.0455e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][3001/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9924e-04 (2.9945e-04)	min lr 2.9924e-04 (2.9945e-04)	Loss 1.2141e+00 (1.0462e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [12][3201/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9920e-04 (2.9943e-04)	min lr 2.9920e-04 (2.9943e-04)	Loss 9.5793e-01 (1.0457e+00)	Max mem (MiB) 58685 (58685)
+2026-04-27 00:24:07,430 - train_accuracy: 0.0000
+2026-04-27 00:24:07,431 - train_total: 1281024.0000
+2026-04-27 00:24:07,431 - train_correct: 0.0000
+2026-04-27 00:24:51,514 - val_accuracy: 1.0000
+2026-04-27 00:24:51,514 - eval_accuracy: 0.6213
+2026-04-27 00:24:51,514 - eval_total: 49920.0000
+2026-04-27 00:24:51,514 - eval_correct: 31014.0000
+Epoch: [13][   1/3336]	Time  4.870 ( 4.870)	Data  4.225 ( 4.225)	max lr 2.9918e-04 (2.9918e-04)	min lr 2.9918e-04 (2.9918e-04)	Loss 1.2478e+00 (1.2478e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][ 201/3336]	Time  0.653 ( 0.679)	Data  0.001 ( 0.022)	max lr 2.9915e-04 (2.9916e-04)	min lr 2.9915e-04 (2.9916e-04)	Loss 1.1013e+00 (1.0315e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][ 401/3336]	Time  0.650 ( 0.668)	Data  0.000 ( 0.011)	max lr 2.9911e-04 (2.9915e-04)	min lr 2.9911e-04 (2.9915e-04)	Loss 1.2117e+00 (1.0274e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][ 601/3336]	Time  0.655 ( 0.664)	Data  0.000 ( 0.008)	max lr 2.9908e-04 (2.9913e-04)	min lr 2.9908e-04 (2.9913e-04)	Loss 7.7074e-01 (1.0243e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][ 801/3336]	Time  0.650 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9905e-04 (2.9911e-04)	min lr 2.9905e-04 (2.9911e-04)	Loss 1.1924e+00 (1.0268e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][1001/3336]	Time  0.653 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9901e-04 (2.9910e-04)	min lr 2.9901e-04 (2.9910e-04)	Loss 9.3126e-01 (1.0262e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][1201/3336]	Time  0.650 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9897e-04 (2.9908e-04)	min lr 2.9897e-04 (2.9908e-04)	Loss 7.9714e-01 (1.0252e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][1401/3336]	Time  0.651 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9894e-04 (2.9906e-04)	min lr 2.9894e-04 (2.9906e-04)	Loss 1.1021e+00 (1.0255e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][1601/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9890e-04 (2.9904e-04)	min lr 2.9890e-04 (2.9904e-04)	Loss 1.1152e+00 (1.0260e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][1801/3336]	Time  0.650 ( 0.659)	Data  0.001 ( 0.003)	max lr 2.9886e-04 (2.9903e-04)	min lr 2.9886e-04 (2.9903e-04)	Loss 9.9934e-01 (1.0258e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][2001/3336]	Time  0.652 ( 0.659)	Data  0.001 ( 0.003)	max lr 2.9882e-04 (2.9901e-04)	min lr 2.9882e-04 (2.9901e-04)	Loss 7.9772e-01 (1.0261e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][2201/3336]	Time  0.654 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9878e-04 (2.9899e-04)	min lr 2.9878e-04 (2.9899e-04)	Loss 1.0994e+00 (1.0268e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][2401/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9874e-04 (2.9897e-04)	min lr 2.9874e-04 (2.9897e-04)	Loss 1.0196e+00 (1.0266e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][2601/3336]	Time  0.652 ( 0.658)	Data  0.001 ( 0.002)	max lr 2.9870e-04 (2.9895e-04)	min lr 2.9870e-04 (2.9895e-04)	Loss 1.0717e+00 (1.0263e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][2801/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9866e-04 (2.9893e-04)	min lr 2.9866e-04 (2.9893e-04)	Loss 1.0775e+00 (1.0256e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][3001/3336]	Time  0.647 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9862e-04 (2.9891e-04)	min lr 2.9862e-04 (2.9891e-04)	Loss 1.1226e+00 (1.0260e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [13][3201/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9857e-04 (2.9889e-04)	min lr 2.9857e-04 (2.9889e-04)	Loss 9.6686e-01 (1.0259e+00)	Max mem (MiB) 58685 (58685)
+2026-04-27 01:01:26,188 - train_accuracy: 0.0000
+2026-04-27 01:01:26,189 - train_total: 1281024.0000
+2026-04-27 01:01:26,189 - train_correct: 0.0000
+2026-04-27 01:02:11,875 - val_accuracy: 1.0000
+2026-04-27 01:02:11,875 - eval_accuracy: 0.6391
+2026-04-27 01:02:11,875 - eval_total: 49920.0000
+2026-04-27 01:02:11,875 - eval_correct: 31904.0000
+Epoch: [14][   1/3336]	Time  3.913 ( 3.913)	Data  3.264 ( 3.264)	max lr 2.9855e-04 (2.9855e-04)	min lr 2.9855e-04 (2.9855e-04)	Loss 1.1042e+00 (1.1042e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][ 201/3336]	Time  0.652 ( 0.674)	Data  0.000 ( 0.017)	max lr 2.9850e-04 (2.9852e-04)	min lr 2.9850e-04 (2.9852e-04)	Loss 8.7932e-01 (1.0149e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][ 401/3336]	Time  0.654 ( 0.666)	Data  0.000 ( 0.009)	max lr 2.9846e-04 (2.9850e-04)	min lr 2.9846e-04 (2.9850e-04)	Loss 1.1922e+00 (1.0122e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][ 601/3336]	Time  0.649 ( 0.663)	Data  0.000 ( 0.006)	max lr 2.9841e-04 (2.9848e-04)	min lr 2.9841e-04 (2.9848e-04)	Loss 1.1095e+00 (1.0066e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][ 801/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9837e-04 (2.9846e-04)	min lr 2.9837e-04 (2.9846e-04)	Loss 1.1885e+00 (1.0099e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][1001/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9832e-04 (2.9843e-04)	min lr 2.9832e-04 (2.9843e-04)	Loss 1.0951e+00 (1.0123e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][1201/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9827e-04 (2.9841e-04)	min lr 2.9827e-04 (2.9841e-04)	Loss 7.5823e-01 (1.0115e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][1401/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9822e-04 (2.9839e-04)	min lr 2.9822e-04 (2.9839e-04)	Loss 9.7363e-01 (1.0128e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][1601/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.003)	max lr 2.9818e-04 (2.9836e-04)	min lr 2.9818e-04 (2.9836e-04)	Loss 1.1407e+00 (1.0110e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][1801/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.003)	max lr 2.9813e-04 (2.9834e-04)	min lr 2.9813e-04 (2.9834e-04)	Loss 1.1076e+00 (1.0124e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][2001/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9808e-04 (2.9832e-04)	min lr 2.9808e-04 (2.9832e-04)	Loss 1.1224e+00 (1.0132e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][2201/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9803e-04 (2.9829e-04)	min lr 2.9803e-04 (2.9829e-04)	Loss 1.1127e+00 (1.0119e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][2401/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9798e-04 (2.9827e-04)	min lr 2.9798e-04 (2.9827e-04)	Loss 1.0922e+00 (1.0099e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][2601/3336]	Time  0.648 ( 0.657)	Data  0.000 ( 0.002)	max lr 2.9792e-04 (2.9824e-04)	min lr 2.9792e-04 (2.9824e-04)	Loss 1.1382e+00 (1.0081e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][2801/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9787e-04 (2.9822e-04)	min lr 2.9787e-04 (2.9822e-04)	Loss 8.1755e-01 (1.0070e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][3001/3336]	Time  0.657 ( 0.658)	Data  0.000 ( 0.003)	max lr 2.9782e-04 (2.9819e-04)	min lr 2.9782e-04 (2.9819e-04)	Loss 7.6272e-01 (1.0068e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [14][3201/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.003)	max lr 2.9777e-04 (2.9817e-04)	min lr 2.9777e-04 (2.9817e-04)	Loss 9.2810e-01 (1.0063e+00)	Max mem (MiB) 58685 (58685)
+2026-04-27 01:38:47,022 - train_accuracy: 0.0000
+2026-04-27 01:38:47,023 - train_total: 1281024.0000
+2026-04-27 01:38:47,023 - train_correct: 0.0000
+2026-04-27 01:39:32,327 - val_accuracy: 1.0000
+2026-04-27 01:39:32,327 - eval_accuracy: 0.6532
+2026-04-27 01:39:32,327 - eval_total: 49920.0000
+2026-04-27 01:39:32,327 - eval_correct: 32610.0000
+Epoch: [15][   1/3336]	Time  3.747 ( 3.747)	Data  3.100 ( 3.100)	max lr 2.9773e-04 (2.9773e-04)	min lr 2.9773e-04 (2.9773e-04)	Loss 1.1374e+00 (1.1374e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [15][ 201/3336]	Time  0.654 ( 0.673)	Data  0.000 ( 0.016)	max lr 2.9767e-04 (2.9770e-04)	min lr 2.9767e-04 (2.9770e-04)	Loss 1.1240e+00 (9.9137e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][ 401/3336]	Time  0.649 ( 0.665)	Data  0.000 ( 0.008)	max lr 2.9762e-04 (2.9767e-04)	min lr 2.9762e-04 (2.9767e-04)	Loss 1.0389e+00 (9.8448e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][ 601/3336]	Time  0.651 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9756e-04 (2.9765e-04)	min lr 2.9756e-04 (2.9765e-04)	Loss 1.1652e+00 (9.8599e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][ 801/3336]	Time  0.650 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9751e-04 (2.9762e-04)	min lr 2.9751e-04 (2.9762e-04)	Loss 9.5772e-01 (9.8764e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][1001/3336]	Time  0.647 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9745e-04 (2.9759e-04)	min lr 2.9745e-04 (2.9759e-04)	Loss 1.0689e+00 (9.8655e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][1201/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9739e-04 (2.9756e-04)	min lr 2.9739e-04 (2.9756e-04)	Loss 1.0628e+00 (9.8714e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][1401/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9733e-04 (2.9753e-04)	min lr 2.9733e-04 (2.9753e-04)	Loss 8.0731e-01 (9.8838e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][1601/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.003)	max lr 2.9727e-04 (2.9750e-04)	min lr 2.9727e-04 (2.9750e-04)	Loss 1.0464e+00 (9.8963e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][1801/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9721e-04 (2.9748e-04)	min lr 2.9721e-04 (2.9748e-04)	Loss 9.4576e-01 (9.9058e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][2001/3336]	Time  0.649 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9715e-04 (2.9745e-04)	min lr 2.9715e-04 (2.9745e-04)	Loss 9.4903e-01 (9.9180e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][2201/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9709e-04 (2.9742e-04)	min lr 2.9709e-04 (2.9742e-04)	Loss 1.1383e+00 (9.9296e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][2401/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9703e-04 (2.9739e-04)	min lr 2.9703e-04 (2.9739e-04)	Loss 1.1317e+00 (9.9448e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][2601/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9697e-04 (2.9736e-04)	min lr 2.9697e-04 (2.9736e-04)	Loss 1.1967e+00 (9.9510e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][2801/3336]	Time  0.648 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9691e-04 (2.9733e-04)	min lr 2.9691e-04 (2.9733e-04)	Loss 1.0558e+00 (9.9527e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][3001/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9684e-04 (2.9730e-04)	min lr 2.9684e-04 (2.9730e-04)	Loss 1.0263e+00 (9.9483e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [15][3201/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9678e-04 (2.9727e-04)	min lr 2.9678e-04 (2.9727e-04)	Loss 1.0909e+00 (9.9329e-01)	Max mem (MiB) 58685 (58685)
+2026-04-27 02:16:05,988 - train_accuracy: 0.0000
+2026-04-27 02:16:05,988 - train_total: 1281024.0000
+2026-04-27 02:16:05,988 - train_correct: 0.0000
+2026-04-27 02:17:07,791 - val_accuracy: 1.0000
+2026-04-27 02:17:07,791 - eval_accuracy: 0.6658
+2026-04-27 02:17:07,791 - eval_total: 49920.0000
+2026-04-27 02:17:07,791 - eval_correct: 33235.0000
+Epoch: [16][   1/3336]	Time  4.854 ( 4.854)	Data  4.207 ( 4.207)	max lr 2.9673e-04 (2.9673e-04)	min lr 2.9673e-04 (2.9673e-04)	Loss 1.0447e+00 (1.0447e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [16][ 201/3336]	Time  0.651 ( 0.680)	Data  0.000 ( 0.022)	max lr 2.9667e-04 (2.9670e-04)	min lr 2.9667e-04 (2.9670e-04)	Loss 1.0264e+00 (9.7067e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][ 401/3336]	Time  0.652 ( 0.669)	Data  0.000 ( 0.011)	max lr 2.9660e-04 (2.9667e-04)	min lr 2.9660e-04 (2.9667e-04)	Loss 9.2645e-01 (9.7512e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][ 601/3336]	Time  0.649 ( 0.665)	Data  0.000 ( 0.008)	max lr 2.9654e-04 (2.9664e-04)	min lr 2.9654e-04 (2.9664e-04)	Loss 9.1032e-01 (9.7366e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][ 801/3336]	Time  0.648 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9647e-04 (2.9660e-04)	min lr 2.9647e-04 (2.9660e-04)	Loss 9.7802e-01 (9.7389e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][1001/3336]	Time  0.649 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9640e-04 (2.9657e-04)	min lr 2.9640e-04 (2.9657e-04)	Loss 1.2074e+00 (9.7637e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][1201/3336]	Time  0.651 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9633e-04 (2.9653e-04)	min lr 2.9633e-04 (2.9653e-04)	Loss 1.0127e+00 (9.7396e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][1401/3336]	Time  0.654 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9626e-04 (2.9650e-04)	min lr 2.9626e-04 (2.9650e-04)	Loss 1.1388e+00 (9.7532e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][1601/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9619e-04 (2.9647e-04)	min lr 2.9619e-04 (2.9647e-04)	Loss 1.0065e+00 (9.7428e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][1801/3336]	Time  0.648 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9612e-04 (2.9643e-04)	min lr 2.9612e-04 (2.9643e-04)	Loss 7.1332e-01 (9.7423e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][2001/3336]	Time  0.652 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9605e-04 (2.9640e-04)	min lr 2.9605e-04 (2.9640e-04)	Loss 1.0554e+00 (9.7446e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][2201/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9598e-04 (2.9636e-04)	min lr 2.9598e-04 (2.9636e-04)	Loss 9.5266e-01 (9.7387e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][2401/3336]	Time  0.653 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9591e-04 (2.9633e-04)	min lr 2.9591e-04 (2.9633e-04)	Loss 9.5362e-01 (9.7279e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][2601/3336]	Time  0.654 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9583e-04 (2.9629e-04)	min lr 2.9583e-04 (2.9629e-04)	Loss 1.0848e+00 (9.7390e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][2801/3336]	Time  0.653 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9576e-04 (2.9626e-04)	min lr 2.9576e-04 (2.9626e-04)	Loss 1.0495e+00 (9.7520e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][3001/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9569e-04 (2.9622e-04)	min lr 2.9569e-04 (2.9622e-04)	Loss 1.0260e+00 (9.7343e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [16][3201/3336]	Time  0.653 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9561e-04 (2.9619e-04)	min lr 2.9561e-04 (2.9619e-04)	Loss 1.0878e+00 (9.7270e-01)	Max mem (MiB) 58685 (58685)
+2026-04-27 02:53:44,922 - train_accuracy: 0.0000
+2026-04-27 02:53:44,923 - train_total: 1281024.0000
+2026-04-27 02:53:44,923 - train_correct: 0.0000
+2026-04-27 02:54:30,647 - val_accuracy: 1.0000
+2026-04-27 02:54:30,647 - eval_accuracy: 0.6732
+2026-04-27 02:54:30,647 - eval_total: 49920.0000
+2026-04-27 02:54:30,647 - eval_correct: 33608.0000
+Epoch: [17][   1/3336]	Time  3.668 ( 3.668)	Data  3.022 ( 3.022)	max lr 2.9556e-04 (2.9556e-04)	min lr 2.9556e-04 (2.9556e-04)	Loss 8.3761e-01 (8.3761e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][ 201/3336]	Time  0.652 ( 0.674)	Data  0.000 ( 0.016)	max lr 2.9548e-04 (2.9552e-04)	min lr 2.9548e-04 (2.9552e-04)	Loss 7.6280e-01 (9.5552e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][ 401/3336]	Time  0.649 ( 0.665)	Data  0.000 ( 0.008)	max lr 2.9541e-04 (2.9548e-04)	min lr 2.9541e-04 (2.9548e-04)	Loss 1.1831e+00 (9.6550e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][ 601/3336]	Time  0.651 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9533e-04 (2.9545e-04)	min lr 2.9533e-04 (2.9545e-04)	Loss 9.3858e-01 (9.6752e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][ 801/3336]	Time  0.648 ( 0.665)	Data  0.000 ( 0.009)	max lr 2.9525e-04 (2.9541e-04)	min lr 2.9525e-04 (2.9541e-04)	Loss 1.1406e+00 (9.6709e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][1001/3336]	Time  0.650 ( 0.663)	Data  0.000 ( 0.007)	max lr 2.9517e-04 (2.9537e-04)	min lr 2.9517e-04 (2.9537e-04)	Loss 1.0767e+00 (9.6793e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][1201/3336]	Time  0.650 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9509e-04 (2.9533e-04)	min lr 2.9509e-04 (2.9533e-04)	Loss 8.2793e-01 (9.6861e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][1401/3336]	Time  0.650 ( 0.661)	Data  0.001 ( 0.005)	max lr 2.9501e-04 (2.9529e-04)	min lr 2.9501e-04 (2.9529e-04)	Loss 1.0180e+00 (9.6626e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][1601/3336]	Time  0.650 ( 0.661)	Data  0.001 ( 0.005)	max lr 2.9493e-04 (2.9525e-04)	min lr 2.9493e-04 (2.9525e-04)	Loss 9.3027e-01 (9.6559e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][1801/3336]	Time  0.648 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9485e-04 (2.9521e-04)	min lr 2.9485e-04 (2.9521e-04)	Loss 1.0193e+00 (9.6539e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][2001/3336]	Time  0.649 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9477e-04 (2.9517e-04)	min lr 2.9477e-04 (2.9517e-04)	Loss 1.1234e+00 (9.6527e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][2201/3336]	Time  0.650 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9469e-04 (2.9513e-04)	min lr 2.9469e-04 (2.9513e-04)	Loss 1.0601e+00 (9.6670e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][2401/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9461e-04 (2.9509e-04)	min lr 2.9461e-04 (2.9509e-04)	Loss 9.0578e-01 (9.6606e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][2601/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9452e-04 (2.9505e-04)	min lr 2.9452e-04 (2.9505e-04)	Loss 1.1592e+00 (9.6567e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][2801/3336]	Time  0.657 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9444e-04 (2.9501e-04)	min lr 2.9444e-04 (2.9501e-04)	Loss 9.1731e-01 (9.6570e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][3001/3336]	Time  0.655 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9435e-04 (2.9497e-04)	min lr 2.9435e-04 (2.9497e-04)	Loss 1.1068e+00 (9.6506e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [17][3201/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9427e-04 (2.9493e-04)	min lr 2.9427e-04 (2.9493e-04)	Loss 1.0340e+00 (9.6422e-01)	Max mem (MiB) 58685 (58685)
+2026-04-27 03:31:08,981 - train_accuracy: 0.0000
+2026-04-27 03:31:08,982 - train_total: 1281024.0000
+2026-04-27 03:31:08,982 - train_correct: 0.0000
+2026-04-27 03:31:53,430 - val_accuracy: 1.0000
+2026-04-27 03:31:53,430 - eval_accuracy: 0.6850
+2026-04-27 03:31:53,430 - eval_total: 49920.0000
+2026-04-27 03:31:53,430 - eval_correct: 34193.0000
+Epoch: [18][   1/3336]	Time  4.652 ( 4.652)	Data  4.005 ( 4.005)	max lr 2.9421e-04 (2.9421e-04)	min lr 2.9421e-04 (2.9421e-04)	Loss 1.0214e+00 (1.0214e+00)	Max mem (MiB) 58685 (58685)
+Epoch: [18][ 201/3336]	Time  0.655 ( 0.678)	Data  0.000 ( 0.021)	max lr 2.9412e-04 (2.9417e-04)	min lr 2.9412e-04 (2.9417e-04)	Loss 1.0675e+00 (9.4625e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][ 401/3336]	Time  0.654 ( 0.668)	Data  0.000 ( 0.011)	max lr 2.9403e-04 (2.9412e-04)	min lr 2.9403e-04 (2.9412e-04)	Loss 7.4689e-01 (9.4570e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][ 601/3336]	Time  0.647 ( 0.664)	Data  0.000 ( 0.007)	max lr 2.9395e-04 (2.9408e-04)	min lr 2.9395e-04 (2.9408e-04)	Loss 9.6722e-01 (9.4602e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][ 801/3336]	Time  0.651 ( 0.662)	Data  0.000 ( 0.006)	max lr 2.9386e-04 (2.9404e-04)	min lr 2.9386e-04 (2.9404e-04)	Loss 8.9964e-01 (9.4842e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][1001/3336]	Time  0.651 ( 0.661)	Data  0.000 ( 0.005)	max lr 2.9377e-04 (2.9399e-04)	min lr 2.9377e-04 (2.9399e-04)	Loss 1.1030e+00 (9.4889e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][1201/3336]	Time  0.650 ( 0.660)	Data  0.001 ( 0.004)	max lr 2.9368e-04 (2.9395e-04)	min lr 2.9368e-04 (2.9395e-04)	Loss 1.0212e+00 (9.4873e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][1401/3336]	Time  0.653 ( 0.660)	Data  0.000 ( 0.004)	max lr 2.9359e-04 (2.9390e-04)	min lr 2.9359e-04 (2.9390e-04)	Loss 9.6539e-01 (9.4825e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][1601/3336]	Time  0.652 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9350e-04 (2.9386e-04)	min lr 2.9350e-04 (2.9386e-04)	Loss 9.6501e-01 (9.4985e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][1801/3336]	Time  0.649 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9341e-04 (2.9381e-04)	min lr 2.9341e-04 (2.9381e-04)	Loss 7.4924e-01 (9.5046e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][2001/3336]	Time  0.650 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9331e-04 (2.9377e-04)	min lr 2.9331e-04 (2.9377e-04)	Loss 6.5843e-01 (9.4981e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][2201/3336]	Time  0.651 ( 0.659)	Data  0.000 ( 0.003)	max lr 2.9322e-04 (2.9372e-04)	min lr 2.9322e-04 (2.9372e-04)	Loss 9.9432e-01 (9.4729e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][2401/3336]	Time  0.650 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9313e-04 (2.9368e-04)	min lr 2.9313e-04 (2.9368e-04)	Loss 1.1081e+00 (9.4870e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][2601/3336]	Time  0.655 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9303e-04 (2.9363e-04)	min lr 2.9303e-04 (2.9363e-04)	Loss 1.0557e+00 (9.4901e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][2801/3336]	Time  0.652 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9294e-04 (2.9359e-04)	min lr 2.9294e-04 (2.9359e-04)	Loss 9.7454e-01 (9.4880e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][3001/3336]	Time  0.649 ( 0.658)	Data  0.001 ( 0.002)	max lr 2.9284e-04 (2.9354e-04)	min lr 2.9284e-04 (2.9354e-04)	Loss 8.6036e-01 (9.4877e-01)	Max mem (MiB) 58685 (58685)
+Epoch: [18][3201/3336]	Time  0.651 ( 0.658)	Data  0.000 ( 0.002)	max lr 2.9275e-04 (2.9349e-04)	min lr 2.9275e-04 (2.9349e-04)	Loss 9.5338e-01 (9.4950e-01)	Max mem (MiB) 58685 (58685)
+2026-04-27 04:08:28,411 - train_accuracy: 0.0000
+2026-04-27 04:08:28,412 - train_total: 1281024.0000
+2026-04-27 04:08:28,412 - train_correct: 0.0000
+2026-04-27 04:09:12,929 - val_accuracy: 1.0000
+2026-04-27 04:09:12,929 - eval_accuracy: 0.6934
+2026-04-27 04:09:12,929 - eval_total: 49920.0000
+2026-04-27 04:09:12,929 - eval_correct: 34616.0000

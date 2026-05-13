@@ -1,0 +1,1037 @@
+[2026-05-01 00:45:40,507] [INFO] [real_accelerator.py:219:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/others/abir_proj/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Attention implementation: flash_attention2
+2026-05-01 00:45:43,952 - Local rank: -1
+2026-05-01 00:45:43,953 - Loading config from configs/atlas_caltech_ft_512.yaml
+2026-05-01 00:45:43,973 - Replacing key at main.exp_name with atlas_d2d10_base_r512_new
+2026-05-01 00:45:43,973 - Replacing key at main.tags with ['atlas', 'finetune', 'caltech101', 'r512']
+2026-05-01 00:45:43,973 - Replacing key at main.phases.dev with True
+2026-05-01 00:45:43,973 - Replacing key at main.checkpoints_dir with /home/others/abir_proj/codebase/Atlas/checkpoints/Atlas_caltech101_ft_512_new
+2026-05-01 00:45:43,973 - Replacing key at main.wandb_project with architecture
+2026-05-01 00:45:43,973 - Replacing key at main.disable_wandb with True
+2026-05-01 00:45:43,973 - Replacing key at main.allow_overwriting_experiment_checkpoints with True
+2026-05-01 00:45:43,973 - Replacing key at dataset.shared_dataset_kwargs.data_path with /home/others/abir_proj/codebase/Datasets/Caltech101/
+2026-05-01 00:45:43,973 - Replacing key at dataset.num_classes with 101
+2026-05-01 00:45:43,973 - Replacing key at dataset.image_augmentations with [{'type': 'TimmAug', 'kwargs': {'input_size': 512, 'color_jitter': 0.2, 'aa': 'rand-m7-mstd0.5-inc1', 'reprob': 0.2, 'remode': 'pixel', 'recount': 1, 'mean': [0.485, 0.456, 0.406], 'std': [0.229, 0.224, 0.225]}}]
+2026-05-01 00:45:43,973 - Replacing key at dataset.test_image_augmentations with [{'type': 'TorchvisionResize', 'kwargs': {'img_size': [512, 512]}}, {'type': 'TorchvisionCenterCrop', 'kwargs': {'height': 512, 'width': 512}}, {'type': 'TorchvisionToTensor', 'kwargs': {}}, {'type': 'NormalizeTensor2d', 'kwargs': {'channel_means': [0.485, 0.456, 0.406], 'channel_stds': [0.229, 0.224, 0.225]}}]
+2026-05-01 00:45:43,974 - Replacing key at dataloader.batch_size with 32
+2026-05-01 00:45:43,974 - Replacing key at dataloader.eval_batch_size with 32
+2026-05-01 00:45:43,974 - Replacing key at dataloader.train_drop_last with True
+2026-05-01 00:45:43,974 - Replacing key at engine.type with Classifier
+2026-05-01 00:45:43,974 - Replacing key at optimizer.type with AdamW
+2026-05-01 00:45:43,974 - Replacing key at optimizer.kwargs with {'lr': 5e-05, 'betas': [0.9, 0.999]}
+2026-05-01 00:45:43,974 - Replacing key at optimizer.scheduler.interval with step
+2026-05-01 00:45:43,974 - Replacing key at optimizer.scheduler.type with StepCosineAnnealingWarmup
+2026-05-01 00:45:43,974 - Replacing key at optimizer.scheduler.kwargs with {'warmup_epochs': 3, 'max_epochs': 30, 'min_lr': 1e-06}
+2026-05-01 00:45:43,974 - Replacing key at model.type with Atlas
+2026-05-01 00:45:43,974 - Replacing key at model.kwargs with {'num_classes': 101, 'img_size': [512, 512, 1], 'patch_size': [16, 16, 1], 'in_chans': 3, 'embed_dim': 768, 'pretrained': True, 'pretrained_path': '/home/others/abir_proj/codebase/Atlas/checkpoints/Atlas_in1k_512/atlas_d2d10_base_r512/epoch=95.ckpt', 'load_head': False, 'reset_head': True, 'freeze_mode': 'except_last_stage', 'freeze_stages': 0, 'freeze_patterns': [], 'kwargs_list': [{'img_size': [512, 512, 1], 'patch_size': 16, 'local2global': 4, 'merge_ratio': 16, 'in_dim': 64, 'dim': 768, 'num_features': 192, 'num_classes': 101, 'drop_path_rate': 0.1, 'global_pool': 'avg', 'class_token': False, 'depths': 2, 'qkv_bias': True, 'pre_norm': False, 'num_heads': 12, 'mlp_ratio': 4, 'embed_dim': 768, 'embed_op': 'convstem', 'layer_args': {'qkv_bias': True, 'qk_scale': 'None', 'input_resolution': 512}}, {'img_size': [16, 16, 1], 'patch_size': 1, 'local2global': 4, 'merge_ratio': 16, 'num_classes': 101, 'drop_path_rate': 0.1, 'global_pool': 'avg', 'class_token': False, 'depths': 10, 'qkv_bias': True, 'pre_norm': False, 'num_heads': 12, 'mlp_ratio': 4, 'embed_dim': 768, 'embed_op': 'conv2d', 'in_dim': 64, 'dim': 768, 'num_features': 192, 'layer_args': {'qkv_bias': True, 'qk_scale': 'None', 'input_resolution': 512}}]}
+2026-05-01 00:45:44,056 - | distributed init (global rank 0): env://, gpu 0 / world_size 1
+experiment_checkpoints_dir: /home/others/abir_proj/codebase/Atlas/checkpoints/Atlas_caltech101_ft_512_new/atlas_d2d10_base_r512_new
+2026-05-01 00:45:44,304 - | initialized host gnode6 as rank 0
+2026-05-01 00:45:44,317 - Multi-GPU: True
+2026-05-01 00:45:44,396 - Checkpoint directory: /home/others/abir_proj/codebase/Atlas/checkpoints/Atlas_caltech101_ft_512_new/atlas_d2d10_base_r512_new
+2026-05-01 00:45:44,631 - Using distributed sampler
+2026-05-01 00:45:44,805 - Multi-GPU distributed evaluation is enabled: the results may be a little inaccurate due to the padding or drop_last in DistributedSampler
+2026-05-01 00:45:44,805 - Ignoring unrecognized kwargs to engine: {'gradual_unfreeze': False}
+2026-05-01 00:45:44,805 - Mixup is activated!
+2026-05-01 00:45:44,805 - Engine built!
+Loading pretrained weights from /home/others/abir_proj/codebase/Atlas/checkpoints/Atlas_in1k_512/atlas_d2d10_base_r512/epoch=95.ckpt
+Missing keys (not loaded): ['atlas_models.0.patch_embed.ds6.norm.weight', 'atlas_models.0.patch_embed.ds6.norm.bias', 'atlas_models.0.patch_embed.ds6.conv.weight', 'atlas_models.0.head.weight', 'atlas_models.0.head.bias', 'atlas_models.1.head.weight', 'atlas_models.1.head.bias', 'fc.weight', 'fc.bias']
+Unexpected keys (in checkpoint but not in model): []
+Trainable params: 75,001,546 / 123,134,063 (60.91%)
+=========================================
+Number of parameters
+trainable_params: 75001546
+non_trainable_params: 48132517
+=========================================
+2026-05-01 00:45:46,059 - Model: Atlas(
+  (atlas_models): ModuleList(
+    (0): StackMSA(
+      (patch_embed): MultiConvEmbed(
+        (proj): Identity()
+        (conv0): Sequential(
+          (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (1): BatchNorm2d(64, eps=0.0001, momentum=0.1, affine=True, track_running_stats=True)
+          (2): ReLU()
+          (3): Conv2d(64, 192, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (4): BatchNorm2d(192, eps=0.0001, momentum=0.1, affine=True, track_running_stats=True)
+          (5): ReLU()
+        )
+        (conv1): Sequential(
+          (0): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (1): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (2): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(192, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+        )
+        (ds1): EarlyConvDS(
+          (norm): LayerNorm2d((192,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(192, 384, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        )
+        (conv2): Sequential(
+          (0): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (1): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+          (2): EarlyConvResidual(
+            (conv_block1): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): GELU(approximate='none')
+            )
+            (conv_block2): Sequential(
+              (0): Conv2d(384, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+              (1): BatchNorm2d(384, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+            (drop_path): Identity()
+          )
+        )
+        (ds2): EarlyConvDS(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        )
+        (ds3): EarlyConvDS_56(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(8, 8), bias=False)
+        )
+        (ds4): EarlyConvDS_112(
+          (norm): LayerNorm2d((192,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(192, 384, kernel_size=(4, 4), stride=(2, 2), padding=(17, 17), bias=False)
+        )
+        (ds5): EarlyConvDS_28(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(4, 4), bias=False)
+        )
+        (ds6): EarlyConvDS_14(
+          (norm): LayerNorm2d((384,), eps=1e-06, elementwise_affine=True)
+          (conv): Conv2d(384, 768, kernel_size=(2, 2), stride=(2, 2), padding=(2, 2), bias=False)
+        )
+      )
+      (levels): ModuleList(
+        (0): MultiScaleAttentionLayer(
+          (blocks): ModuleList(
+            (0): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0-1): 2 x CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): Identity()
+                )
+              )
+              (posemb): ModuleList(
+                (0-1): 2 x RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (1): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0-1): 2 x CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.100)
+                )
+              )
+              (posemb): ModuleList(
+                (0-1): 2 x RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+      (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (avgpool): AdaptiveAvgPool2d(output_size=1)
+      (head): Linear(in_features=768, out_features=101, bias=True)
+    )
+    (1): StackMSA(
+      (levels): ModuleList(
+        (0): MultiScaleAttentionLayer(
+          (blocks): ModuleList(
+            (0): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): Identity()
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (1): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.011)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (2): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.022)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (3): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.033)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (4): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.044)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (5): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.056)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (6): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.067)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (7): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.078)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (8): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.089)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+            (9): MultiScaleAttentionBlock(
+              (proj_drop): Dropout(p=0.0, inplace=False)
+              (blocks): ModuleList(
+                (0): CrossWindowBlock(
+                  (norm1_q): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (norm1_kv): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (attn): CrossWindowAttention(
+                    (q): Linear(in_features=768, out_features=768, bias=True)
+                    (kv): Linear(in_features=768, out_features=1536, bias=True)
+                    (proj): Linear(in_features=768, out_features=768, bias=True)
+                    (proj_drop): Dropout(p=0.0, inplace=False)
+                  )
+                  (norm2): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+                  (mlp): Mlp(
+                    (fc1): Linear(in_features=768, out_features=3072, bias=True)
+                    (act): GELU(approximate='none')
+                    (drop1): Dropout(p=0.0, inplace=False)
+                    (norm): Identity()
+                    (fc2): Linear(in_features=3072, out_features=768, bias=True)
+                    (drop2): Dropout(p=0.0, inplace=False)
+                  )
+                  (drop_path): DropPath(drop_prob=0.100)
+                )
+              )
+              (posemb): ModuleList(
+                (0): RelativePositionEmbed(
+                  (projector): Sequential(
+                    (0): Linear(in_features=2, out_features=512, bias=True)
+                    (1): ReLU()
+                    (2): Linear(in_features=512, out_features=768, bias=False)
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+      (norm): BatchNorm2d(768, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (avgpool): AdaptiveAvgPool2d(output_size=1)
+      (head): Linear(in_features=768, out_features=101, bias=True)
+    )
+  )
+  (readout_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (fc_norm): LayerNorm((768,), eps=1e-05, elementwise_affine=True)
+  (fc): Linear(in_features=768, out_features=101, bias=True)
+)
+2026-05-01 00:45:46,061 - Trainable params: 75,001,546 / 123,134,063 (60.91%)
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.norm2.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.posemb.0.projector.0.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.posemb.0.projector.0.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.0.posemb.0.projector.2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.norm2.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.posemb.0.projector.0.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.posemb.0.projector.0.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.1.posemb.0.projector.2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.q.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.q.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm2.weight
+2026-05-01 00:45:46,061 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.norm2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.posemb.0.projector.0.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.posemb.0.projector.0.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.2.posemb.0.projector.2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.norm2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.posemb.0.projector.0.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.posemb.0.projector.0.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.3.posemb.0.projector.2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.norm2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.posemb.0.projector.0.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.posemb.0.projector.0.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.4.posemb.0.projector.2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.norm2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.posemb.0.projector.0.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.posemb.0.projector.0.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.5.posemb.0.projector.2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.q.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.q.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm2.weight
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.norm2.bias
+2026-05-01 00:45:46,062 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.posemb.0.projector.0.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.posemb.0.projector.0.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.6.posemb.0.projector.2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.norm2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.posemb.0.projector.0.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.posemb.0.projector.0.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.7.posemb.0.projector.2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.norm2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.posemb.0.projector.0.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.posemb.0.projector.0.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.8.posemb.0.projector.2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm1_q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm1_q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm1_kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm1_kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.q.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.q.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.kv.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.kv.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.proj.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.attn.proj.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.norm2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.mlp.fc1.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.mlp.fc1.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.mlp.fc2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.blocks.0.mlp.fc2.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.posemb.0.projector.0.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.posemb.0.projector.0.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.levels.0.blocks.9.posemb.0.projector.2.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.norm.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.norm.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.head.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] atlas_models.1.head.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] readout_norm.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] readout_norm.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] fc_norm.weight
+2026-05-01 00:45:46,063 - [TRAINABLE] fc_norm.bias
+2026-05-01 00:45:46,063 - [TRAINABLE] fc.weight
+2026-05-01 00:45:46,064 - [TRAINABLE] fc.bias
+2026-05-01 00:45:46,081 - Start training for 30 epochs
+Epoch: [0][  1/135]	Time  2.478 ( 2.478)	Data  1.192 ( 1.192)	max lr 0.0000e+00 (0.0000e+00)	min lr 0.0000e+00 (0.0000e+00)	Loss 4.8377e+00 (4.8377e+00)	Max mem (MiB) 949 (949)
+2026-05-01 00:46:06,165 - train_accuracy: 0.0000
+2026-05-01 00:46:06,166 - train_total: 4320.0000
+2026-05-01 00:46:06,166 - train_correct: 0.0000
+2026-05-01 00:46:35,512 - val_accuracy: 1.0000
+2026-05-01 00:46:35,512 - eval_accuracy: 0.5933
+2026-05-01 00:46:35,512 - eval_total: 1736.0000
+2026-05-01 00:46:35,512 - eval_correct: 1030.0000
+Epoch: [1][  1/135]	Time  0.894 ( 0.894)	Data  0.761 ( 0.761)	max lr 1.6667e-05 (1.6667e-05)	min lr 1.6667e-05 (1.6667e-05)	Loss 2.2375e+00 (2.2375e+00)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:46:54,021 - train_accuracy: 0.0000
+2026-05-01 00:46:54,021 - train_total: 4320.0000
+2026-05-01 00:46:54,021 - train_correct: 0.0000
+2026-05-01 00:47:11,706 - val_accuracy: 1.0000
+2026-05-01 00:47:11,707 - eval_accuracy: 0.8664
+2026-05-01 00:47:11,707 - eval_total: 1736.0000
+2026-05-01 00:47:11,707 - eval_correct: 1504.0000
+Epoch: [2][  1/135]	Time  0.591 ( 0.591)	Data  0.459 ( 0.459)	max lr 3.3333e-05 (3.3333e-05)	min lr 3.3333e-05 (3.3333e-05)	Loss 1.1100e+00 (1.1100e+00)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:47:29,986 - train_accuracy: 0.0000
+2026-05-01 00:47:29,987 - train_total: 4320.0000
+2026-05-01 00:47:29,987 - train_correct: 0.0000
+2026-05-01 00:47:47,631 - val_accuracy: 1.0000
+2026-05-01 00:47:47,632 - eval_accuracy: 0.9159
+2026-05-01 00:47:47,632 - eval_total: 1736.0000
+2026-05-01 00:47:47,632 - eval_correct: 1590.0000
+Epoch: [3][  1/135]	Time  0.733 ( 0.733)	Data  0.599 ( 0.599)	max lr 5.0000e-05 (5.0000e-05)	min lr 5.0000e-05 (5.0000e-05)	Loss 7.4114e-01 (7.4114e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:48:06,074 - train_accuracy: 0.0000
+2026-05-01 00:48:06,074 - train_total: 4320.0000
+2026-05-01 00:48:06,074 - train_correct: 0.0000
+2026-05-01 00:48:23,577 - val_accuracy: 1.0000
+2026-05-01 00:48:23,577 - eval_accuracy: 0.9395
+2026-05-01 00:48:23,577 - eval_total: 1736.0000
+2026-05-01 00:48:23,577 - eval_correct: 1631.0000
+Epoch: [4][  1/135]	Time  0.885 ( 0.885)	Data  0.753 ( 0.753)	max lr 4.9834e-05 (4.9834e-05)	min lr 4.9834e-05 (4.9834e-05)	Loss 1.0116e+00 (1.0116e+00)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:48:42,096 - train_accuracy: 0.0000
+2026-05-01 00:48:42,097 - train_total: 4320.0000
+2026-05-01 00:48:42,097 - train_correct: 0.0000
+2026-05-01 00:48:59,648 - val_accuracy: 1.0000
+2026-05-01 00:48:59,648 - eval_accuracy: 0.9067
+2026-05-01 00:48:59,648 - eval_total: 1736.0000
+2026-05-01 00:48:59,648 - eval_correct: 1574.0000
+Epoch: [5][  1/135]	Time  0.814 ( 0.814)	Data  0.683 ( 0.683)	max lr 4.9340e-05 (4.9340e-05)	min lr 4.9340e-05 (4.9340e-05)	Loss 8.0098e-01 (8.0098e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:49:18,082 - train_accuracy: 0.0000
+2026-05-01 00:49:18,082 - train_total: 4320.0000
+2026-05-01 00:49:18,082 - train_correct: 0.0000
+2026-05-01 00:49:47,127 - val_accuracy: 1.0000
+2026-05-01 00:49:47,127 - eval_accuracy: 0.9009
+2026-05-01 00:49:47,127 - eval_total: 1736.0000
+2026-05-01 00:49:47,127 - eval_correct: 1564.0000
+Epoch: [6][  1/135]	Time  0.737 ( 0.737)	Data  0.603 ( 0.603)	max lr 4.8522e-05 (4.8522e-05)	min lr 4.8522e-05 (4.8522e-05)	Loss 8.4512e-01 (8.4512e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:50:05,490 - train_accuracy: 0.0000
+2026-05-01 00:50:05,490 - train_total: 4320.0000
+2026-05-01 00:50:05,490 - train_correct: 0.0000
+2026-05-01 00:50:27,826 - val_accuracy: 1.0000
+2026-05-01 00:50:27,826 - eval_accuracy: 0.9240
+2026-05-01 00:50:27,826 - eval_total: 1736.0000
+2026-05-01 00:50:27,826 - eval_correct: 1604.0000
+Epoch: [7][  1/135]	Time  0.909 ( 0.909)	Data  0.777 ( 0.777)	max lr 4.7394e-05 (4.7394e-05)	min lr 4.7394e-05 (4.7394e-05)	Loss 6.8347e-01 (6.8347e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:50:46,389 - train_accuracy: 0.0000
+2026-05-01 00:50:46,389 - train_total: 4320.0000
+2026-05-01 00:50:46,389 - train_correct: 0.0000
+2026-05-01 00:51:03,895 - val_accuracy: 1.0000
+2026-05-01 00:51:03,896 - eval_accuracy: 0.9286
+2026-05-01 00:51:03,896 - eval_total: 1736.0000
+2026-05-01 00:51:03,896 - eval_correct: 1612.0000
+Epoch: [8][  1/135]	Time  0.688 ( 0.688)	Data  0.554 ( 0.554)	max lr 4.5969e-05 (4.5969e-05)	min lr 4.5969e-05 (4.5969e-05)	Loss 7.4418e-01 (7.4418e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:51:22,378 - train_accuracy: 0.0000
+2026-05-01 00:51:22,378 - train_total: 4320.0000
+2026-05-01 00:51:22,378 - train_correct: 0.0000
+2026-05-01 00:51:40,207 - val_accuracy: 1.0000
+2026-05-01 00:51:40,207 - eval_accuracy: 0.9251
+2026-05-01 00:51:40,207 - eval_total: 1736.0000
+2026-05-01 00:51:40,207 - eval_correct: 1606.0000
+Epoch: [9][  1/135]	Time  0.858 ( 0.858)	Data  0.724 ( 0.724)	max lr 4.4268e-05 (4.4268e-05)	min lr 4.4268e-05 (4.4268e-05)	Loss 5.1709e-01 (5.1709e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:51:58,665 - train_accuracy: 0.0000
+2026-05-01 00:51:58,665 - train_total: 4320.0000
+2026-05-01 00:51:58,665 - train_correct: 0.0000
+2026-05-01 00:52:16,451 - val_accuracy: 1.0000
+2026-05-01 00:52:16,451 - eval_accuracy: 0.9182
+2026-05-01 00:52:16,451 - eval_total: 1736.0000
+2026-05-01 00:52:16,451 - eval_correct: 1594.0000
+Epoch: [10][  1/135]	Time  0.755 ( 0.755)	Data  0.620 ( 0.620)	max lr 4.2313e-05 (4.2313e-05)	min lr 4.2313e-05 (4.2313e-05)	Loss 4.6459e-01 (4.6459e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:52:35,013 - train_accuracy: 0.0000
+2026-05-01 00:52:35,014 - train_total: 4320.0000
+2026-05-01 00:52:35,014 - train_correct: 0.0000
+2026-05-01 00:53:04,142 - val_accuracy: 1.0000
+2026-05-01 00:53:04,142 - eval_accuracy: 0.9263
+2026-05-01 00:53:04,142 - eval_total: 1736.0000
+2026-05-01 00:53:04,142 - eval_correct: 1608.0000
+Epoch: [11][  1/135]	Time  0.914 ( 0.914)	Data  0.784 ( 0.784)	max lr 4.0130e-05 (4.0130e-05)	min lr 4.0130e-05 (4.0130e-05)	Loss 8.1094e-01 (8.1094e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:53:22,679 - train_accuracy: 0.0000
+2026-05-01 00:53:22,679 - train_total: 4320.0000
+2026-05-01 00:53:22,679 - train_correct: 0.0000
+2026-05-01 00:53:40,507 - val_accuracy: 1.0000
+2026-05-01 00:53:40,507 - eval_accuracy: 0.9482
+2026-05-01 00:53:40,507 - eval_total: 1736.0000
+2026-05-01 00:53:40,507 - eval_correct: 1646.0000
+Epoch: [12][  1/135]	Time  0.765 ( 0.765)	Data  0.633 ( 0.633)	max lr 3.7750e-05 (3.7750e-05)	min lr 3.7750e-05 (3.7750e-05)	Loss 5.8982e-01 (5.8982e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:53:58,854 - train_accuracy: 0.0000
+2026-05-01 00:53:58,855 - train_total: 4320.0000
+2026-05-01 00:53:58,855 - train_correct: 0.0000
+2026-05-01 00:54:16,867 - val_accuracy: 1.0000
+2026-05-01 00:54:16,867 - eval_accuracy: 0.9245
+2026-05-01 00:54:16,867 - eval_total: 1736.0000
+2026-05-01 00:54:16,867 - eval_correct: 1605.0000
+Epoch: [13][  1/135]	Time  0.807 ( 0.807)	Data  0.677 ( 0.677)	max lr 3.5204e-05 (3.5204e-05)	min lr 3.5204e-05 (3.5204e-05)	Loss 4.7545e-01 (4.7545e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:54:35,376 - train_accuracy: 0.0000
+2026-05-01 00:54:35,376 - train_total: 4320.0000
+2026-05-01 00:54:35,376 - train_correct: 0.0000
+2026-05-01 00:54:52,077 - val_accuracy: 1.0000
+2026-05-01 00:54:52,077 - eval_accuracy: 0.9464
+2026-05-01 00:54:52,077 - eval_total: 1736.0000
+2026-05-01 00:54:52,077 - eval_correct: 1643.0000
+Epoch: [14][  1/135]	Time  0.928 ( 0.928)	Data  0.795 ( 0.795)	max lr 3.2527e-05 (3.2527e-05)	min lr 3.2527e-05 (3.2527e-05)	Loss 4.8665e-01 (4.8665e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:55:10,667 - train_accuracy: 0.0000
+2026-05-01 00:55:10,667 - train_total: 4320.0000
+2026-05-01 00:55:10,667 - train_correct: 0.0000
+2026-05-01 00:55:27,208 - val_accuracy: 1.0000
+2026-05-01 00:55:27,209 - eval_accuracy: 0.9355
+2026-05-01 00:55:27,209 - eval_total: 1736.0000
+2026-05-01 00:55:27,209 - eval_correct: 1624.0000
+Epoch: [15][  1/135]	Time  0.624 ( 0.624)	Data  0.482 ( 0.482)	max lr 2.9754e-05 (2.9754e-05)	min lr 2.9754e-05 (2.9754e-05)	Loss 6.4564e-01 (6.4564e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:55:45,543 - train_accuracy: 0.0000
+2026-05-01 00:55:45,543 - train_total: 4320.0000
+2026-05-01 00:55:45,543 - train_correct: 0.0000
+2026-05-01 00:56:13,755 - val_accuracy: 1.0000
+2026-05-01 00:56:13,755 - eval_accuracy: 0.9343
+2026-05-01 00:56:13,755 - eval_total: 1736.0000
+2026-05-01 00:56:13,755 - eval_correct: 1622.0000
+Epoch: [16][  1/135]	Time  0.655 ( 0.655)	Data  0.520 ( 0.520)	max lr 2.6925e-05 (2.6925e-05)	min lr 2.6925e-05 (2.6925e-05)	Loss 5.2341e-01 (5.2341e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:56:32,209 - train_accuracy: 0.0000
+2026-05-01 00:56:32,209 - train_total: 4320.0000
+2026-05-01 00:56:32,209 - train_correct: 0.0000
+2026-05-01 00:56:50,031 - val_accuracy: 1.0000
+2026-05-01 00:56:50,031 - eval_accuracy: 0.9361
+2026-05-01 00:56:50,031 - eval_total: 1736.0000
+2026-05-01 00:56:50,031 - eval_correct: 1625.0000
+Epoch: [17][  1/135]	Time  0.806 ( 0.806)	Data  0.673 ( 0.673)	max lr 2.4075e-05 (2.4075e-05)	min lr 2.4075e-05 (2.4075e-05)	Loss 7.6182e-01 (7.6182e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:57:08,406 - train_accuracy: 0.0000
+2026-05-01 00:57:08,406 - train_total: 4320.0000
+2026-05-01 00:57:08,406 - train_correct: 0.0000
+2026-05-01 00:57:26,221 - val_accuracy: 1.0000
+2026-05-01 00:57:26,221 - eval_accuracy: 0.9510
+2026-05-01 00:57:26,221 - eval_total: 1736.0000
+2026-05-01 00:57:26,221 - eval_correct: 1651.0000
+Epoch: [18][  1/135]	Time  0.858 ( 0.858)	Data  0.729 ( 0.729)	max lr 2.1246e-05 (2.1246e-05)	min lr 2.1246e-05 (2.1246e-05)	Loss 5.5569e-01 (5.5569e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:57:44,620 - train_accuracy: 0.0000
+2026-05-01 00:57:44,620 - train_total: 4320.0000
+2026-05-01 00:57:44,620 - train_correct: 0.0000
+2026-05-01 00:58:02,560 - val_accuracy: 1.0000
+2026-05-01 00:58:02,560 - eval_accuracy: 0.9447
+2026-05-01 00:58:02,560 - eval_total: 1736.0000
+2026-05-01 00:58:02,560 - eval_correct: 1640.0000
+Epoch: [19][  1/135]	Time  0.984 ( 0.984)	Data  0.852 ( 0.852)	max lr 1.8473e-05 (1.8473e-05)	min lr 1.8473e-05 (1.8473e-05)	Loss 1.4804e+00 (1.4804e+00)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:58:21,229 - train_accuracy: 0.0000
+2026-05-01 00:58:21,229 - train_total: 4320.0000
+2026-05-01 00:58:21,229 - train_correct: 0.0000
+2026-05-01 00:58:39,020 - val_accuracy: 1.0000
+2026-05-01 00:58:39,020 - eval_accuracy: 0.9487
+2026-05-01 00:58:39,020 - eval_total: 1736.0000
+2026-05-01 00:58:39,020 - eval_correct: 1647.0000
+Epoch: [20][  1/135]	Time  0.715 ( 0.715)	Data  0.584 ( 0.584)	max lr 1.5796e-05 (1.5796e-05)	min lr 1.5796e-05 (1.5796e-05)	Loss 5.3592e-01 (5.3592e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:58:57,491 - train_accuracy: 0.0000
+2026-05-01 00:58:57,491 - train_total: 4320.0000
+2026-05-01 00:58:57,491 - train_correct: 0.0000
+2026-05-01 00:59:27,119 - val_accuracy: 1.0000
+2026-05-01 00:59:27,119 - eval_accuracy: 0.9435
+2026-05-01 00:59:27,119 - eval_total: 1736.0000
+2026-05-01 00:59:27,119 - eval_correct: 1638.0000
+Epoch: [21][  1/135]	Time  0.850 ( 0.850)	Data  0.717 ( 0.717)	max lr 1.3250e-05 (1.3250e-05)	min lr 1.3250e-05 (1.3250e-05)	Loss 6.2440e-01 (6.2440e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 00:59:45,548 - train_accuracy: 0.0000
+2026-05-01 00:59:45,548 - train_total: 4320.0000
+2026-05-01 00:59:45,548 - train_correct: 0.0000
+2026-05-01 01:00:03,490 - val_accuracy: 1.0000
+2026-05-01 01:00:03,491 - eval_accuracy: 0.9539
+2026-05-01 01:00:03,491 - eval_total: 1736.0000
+2026-05-01 01:00:03,491 - eval_correct: 1656.0000
+Epoch: [22][  1/135]	Time  0.847 ( 0.847)	Data  0.713 ( 0.713)	max lr 1.0870e-05 (1.0870e-05)	min lr 1.0870e-05 (1.0870e-05)	Loss 8.5087e-01 (8.5087e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:00:21,930 - train_accuracy: 0.0000
+2026-05-01 01:00:21,931 - train_total: 4320.0000
+2026-05-01 01:00:21,931 - train_correct: 0.0000
+2026-05-01 01:00:39,616 - val_accuracy: 1.0000
+2026-05-01 01:00:39,617 - eval_accuracy: 0.9533
+2026-05-01 01:00:39,617 - eval_total: 1736.0000
+2026-05-01 01:00:39,617 - eval_correct: 1655.0000
+Epoch: [23][  1/135]	Time  0.804 ( 0.804)	Data  0.665 ( 0.665)	max lr 8.6871e-06 (8.6871e-06)	min lr 8.6871e-06 (8.6871e-06)	Loss 6.0025e-01 (6.0025e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:00:58,152 - train_accuracy: 0.0000
+2026-05-01 01:00:58,153 - train_total: 4320.0000
+2026-05-01 01:00:58,153 - train_correct: 0.0000
+2026-05-01 01:01:15,696 - val_accuracy: 1.0000
+2026-05-01 01:01:15,696 - eval_accuracy: 0.9545
+2026-05-01 01:01:15,696 - eval_total: 1736.0000
+2026-05-01 01:01:15,696 - eval_correct: 1657.0000
+Epoch: [24][  1/135]	Time  0.975 ( 0.975)	Data  0.840 ( 0.840)	max lr 6.7319e-06 (6.7319e-06)	min lr 6.7319e-06 (6.7319e-06)	Loss 5.6472e-01 (5.6472e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:01:34,399 - train_accuracy: 0.0000
+2026-05-01 01:01:34,399 - train_total: 4320.0000
+2026-05-01 01:01:34,399 - train_correct: 0.0000
+2026-05-01 01:01:51,965 - val_accuracy: 1.0000
+2026-05-01 01:01:51,965 - eval_accuracy: 0.9459
+2026-05-01 01:01:51,965 - eval_total: 1736.0000
+2026-05-01 01:01:51,965 - eval_correct: 1642.0000
+Epoch: [25][  1/135]	Time  0.827 ( 0.827)	Data  0.696 ( 0.696)	max lr 5.0305e-06 (5.0305e-06)	min lr 5.0305e-06 (5.0305e-06)	Loss 5.8978e-01 (5.8978e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:02:10,518 - train_accuracy: 0.0000
+2026-05-01 01:02:10,518 - train_total: 4320.0000
+2026-05-01 01:02:10,518 - train_correct: 0.0000
+2026-05-01 01:02:46,880 - val_accuracy: 1.0000
+2026-05-01 01:02:46,880 - eval_accuracy: 0.9510
+2026-05-01 01:02:46,880 - eval_total: 1736.0000
+2026-05-01 01:02:46,880 - eval_correct: 1651.0000
+Epoch: [26][  1/135]	Time  0.653 ( 0.653)	Data  0.520 ( 0.520)	max lr 3.6060e-06 (3.6060e-06)	min lr 3.6060e-06 (3.6060e-06)	Loss 4.5979e-01 (4.5979e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:03:05,302 - train_accuracy: 0.0000
+2026-05-01 01:03:05,302 - train_total: 4320.0000
+2026-05-01 01:03:05,302 - train_correct: 0.0000
+2026-05-01 01:03:23,056 - val_accuracy: 1.0000
+2026-05-01 01:03:23,056 - eval_accuracy: 0.9533
+2026-05-01 01:03:23,056 - eval_total: 1736.0000
+2026-05-01 01:03:23,056 - eval_correct: 1655.0000
+Epoch: [27][  1/135]	Time  0.933 ( 0.933)	Data  0.801 ( 0.801)	max lr 2.4775e-06 (2.4775e-06)	min lr 2.4775e-06 (2.4775e-06)	Loss 5.6804e-01 (5.6804e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:03:41,566 - train_accuracy: 0.0000
+2026-05-01 01:03:41,566 - train_total: 4320.0000
+2026-05-01 01:03:41,566 - train_correct: 0.0000
+2026-05-01 01:03:59,668 - val_accuracy: 1.0000
+2026-05-01 01:03:59,668 - eval_accuracy: 0.9522
+2026-05-01 01:03:59,668 - eval_total: 1736.0000
+2026-05-01 01:03:59,668 - eval_correct: 1653.0000
+Epoch: [28][  1/135]	Time  0.969 ( 0.969)	Data  0.836 ( 0.836)	max lr 1.6604e-06 (1.6604e-06)	min lr 1.6604e-06 (1.6604e-06)	Loss 5.8903e-01 (5.8903e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:04:18,262 - train_accuracy: 0.0000
+2026-05-01 01:04:18,262 - train_total: 4320.0000
+2026-05-01 01:04:18,262 - train_correct: 0.0000
+2026-05-01 01:04:36,261 - val_accuracy: 1.0000
+2026-05-01 01:04:36,261 - eval_accuracy: 0.9522
+2026-05-01 01:04:36,261 - eval_total: 1736.0000
+2026-05-01 01:04:36,261 - eval_correct: 1653.0000
+Epoch: [29][  1/135]	Time  0.793 ( 0.793)	Data  0.658 ( 0.658)	max lr 1.1657e-06 (1.1657e-06)	min lr 1.1657e-06 (1.1657e-06)	Loss 4.8988e-01 (4.8988e-01)	Max mem (MiB) 2806 (2806)
+2026-05-01 01:04:54,624 - train_accuracy: 0.0000
+2026-05-01 01:04:54,624 - train_total: 4320.0000
+2026-05-01 01:04:54,624 - train_correct: 0.0000
+2026-05-01 01:05:23,507 - val_accuracy: 1.0000
+2026-05-01 01:05:23,507 - eval_accuracy: 0.9516
+2026-05-01 01:05:23,507 - eval_total: 1736.0000
+2026-05-01 01:05:23,507 - eval_correct: 1652.0000
+Experiment time 0:19:37

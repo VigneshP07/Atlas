@@ -1,0 +1,24 @@
+==========================================
+SLURM_CLUSTER_NAME = paramprabha
+SLURM_JOB_ACCOUNT = nsmext
+SLURM_JOB_ID = 217772
+SLURM_JOB_NAME = atlas_train
+SLURM_JOB_NODELIST = rpgpu[013-014]
+SLURM_JOB_USER = abircs
+SLURM_JOB_UID = 52368
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 1648139
+SLURM_SUBMIT_DIR = /scratch/abircs/sudipta/atlas
+SLURM_CPUS_ON_NODE = 12
+SLURM_NTASKS = 2
+SLURM_TASK_PID = 1648139
+==========================================
+==============================================
+ SLURM Job ID       : 217772
+ Nodes allocated    : 2
+ GPUs per node      : 2
+ MASTER_ADDR        : rpgpu013
+ MASTER_PORT        : 29500
+ Config file        : /scratch/abircs/sudipta/atlas/configs/test.yaml
+ Log directory      : /scratch/abircs/sudipta/atlas/BatchLogs/217772
+==============================================
