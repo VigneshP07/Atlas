@@ -300,7 +300,7 @@ dependencies:
       - astor==0.8.1
       - autograd==1.5
       - autograd-gamma==0.5.0
-      - av==10.0.0
+      - av
       - babel==2.12.1
       - blessed==1.20.0
       - cachetools==5.3.1
@@ -319,7 +319,6 @@ dependencies:
       - et-xmlfile==2.0.0
       - fairscale==0.4.0
       - fire==0.5.0
-      - flash-attn==2.6.3
       - fonttools==4.39.3
       - formulaic==0.5.2
       - fqdn==1.5.1
