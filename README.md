@@ -1,69 +1,126 @@
-# Atlas: Multi-Scale Attention Improves Long Context Image Modeling
-[Kumar Krishna Agrawal*](https://people.eecs.berkeley.edu/~krishna/), [Long Lian*](https://tonylian.com/), [Longchao Liu](), [Natalia Harguindeguy](), [Boyi Li](https://sites.google.com/site/boyilics/home), [Alexander Bick](), [Maggie Chung](), [Trevor Darrell](https://people.eecs.berkeley.edu/~trevor/),  [Adam Yala](https://www.adamyala.org/) 
+# Atlas
 
-[![arXiv](https://img.shields.io/badge/arXiv-2503.12355-b31b1b.svg)](https://arxiv.org/abs/2503.12355)
+## Directory Structure
 
-
-
-![Atlas](figures/atlas.png)
-
-Efficiently modeling massive images is a long-standing challenge in machine learning. To this end, we introduce Multi-Scale Attention (MSA). MSA relies on two key ideas, (i) multi-scale representations (ii) bi-directional cross-scale communication. MSA creates O(log N) scales to represent the image across progressively coarser features and leverages cross-attention to propagate information across scales. We then introduce Atlas, a novel neural network architecture based on MSA. We demonstrate that Atlas significantly improves the compute-performance tradeoff of long-context image modeling in a high-resolution variant of ImageNet 100. At 1024px resolution, Atlas-B achieves 91.04% accuracy, comparable to ConvNext-B (91.92%) while being 4.3x faster. Atlas is 2.95x faster and 7.38% better than FasterViT, 2.25x faster and 4.96% better than LongViT. In comparisons against MambaVision-S, we find Atlas-S achieves 5%, 16% and 32% higher accuracy at 1024px, 2048px and 4096px respectively, while obtaining similar runtimes.
-
-#### Key Ideas
-
-- **Multi-Scale Attention (MSA)**: MSA creates O(log N) scales to represent the image across progressively coarser features and leverages cross-attention to propagate information across scales.
-- **Bi-Directional Cross-Scale Communication**: MSA enables bi-directional cross-scale communication to propagate information across scales.
-
-![Atlas](figures/pathways.png)
-
-
-## Training Atlas
-
-### Installation
-You need to install [Miniconda](https://docs.anaconda.com/miniconda/miniconda-install/) first and then run the command.
-```sh
-# Ensure you are in the clone of this repo
-conda env create -f environment.yaml
-conda activate atlas
+```
+Atlas/
+├── sandstone/                  # Source code
+│   ├── models/
+│   │   ├── atlas.py            # Atlas model (modified)
+│   │   └── msa.py              # MSA model (modified)
+│   └── ...
+├── configs/                    # Configuration files for experiments
+├── jobs/                       # Scripts used to run experiments
+├── checkpoints/
+├── Output_Logs/                # Output and error logs for all experiments
+├── main.py                     # Main entry point (modified)
+└── environment.yaml            # Conda environment specification
 ```
 
-### Training
-To train Atlas on 1024 x 1024 ImageNet 100, you can use the following command.
-```sh
-python -m torch.distributed.run --master_port 8844 --master_addr 127.0.0.1 --nproc_per_node=8 train.py configs/atlas_B_res1024.yaml
+> For environment setup instructions, refer to [ENV_BUILD.md](./ENV_BUILD.md).
+
+---
+
+## Source Code
+
+The source code resides in the `sandstone/` directory. The following files have been modified from the original codebase:
+
+- `main.py` — Main training and evaluation entry point
+- `sandstone/models/atlas.py` — Atlas model definition
+- `sandstone/models/msa.py` — MSA model definition
+
+---
+
+## Experiments
+
+### Configuration Files
+
+All configuration files are located in the `configs/` directory. Each config file corresponds to a specific experiment and is named accordingly.
+
+The following parameters are set inside the config file before running an experiment:
+
+- **Model resolution and hyperparameters** — architecture settings, learning rate, batch size, etc.
+- **Dataset path** — path to the dataset to be used for training/evaluation
+- **Checkpoint directory path** — directory where model checkpoints will be saved
+
+When **resuming** a previously interrupted experiment, set the path to the latest checkpoint under the following key in the config file:
+
+```yaml
+engine:
+  kwargs:
+    resume: <path_to_latest_checkpoint>
 ```
 
-### Comparison of Vision Backbones
+#### Finetuning
 
-![Atlas](figures/atlas_teaser.png)
+To finetune from a pretrained checkpoint, set the following parameters under `model:kwargs:` in the config file:
 
-Comparison of vision backbones on 1024x1024 image resolution on the HR-IN100 benchmark. Each model is evaluated on runtime (in hours), relative speed compared to Atlas, and Top-1 accuracy (in %). All models are base scale and were trained for 320 epochs until convergence on single 8 × H100 GPU node.
-
-| Architecture | Model | Runtime (hr) ↓ | Relative speedup ↓ | Top-1 Acc. (%) ↑ |
-|--------------|-------|---------------|-------------------|-----------------|
-| Transformer | ViT-B | 26.77 | 1.15x | 90.66 |
-| | Swin-B | 37.25 | 1.6x | 90.89 |
-| | FasterViT-4 | 68.31 | 2.9× | 83.66 |
-| | LongViT-B | 52.23 | 2.2× | 86.08 |
-| Convolutional | ConvNext-B | 100.11 | 4.3× | 91.92 |
-| Mamba | MambaVision-B | 22.69 | 0.98× | 84.86 |
-| Multi-Scale | Atlas-B | 23.12 | 1.00× | 91.04 |
-
-
-## Contact us
-Please contact Kumar Krishna Agrawal if you have any questions: `kagrawal@berkeley.edu`.
-
-
-## Acknowledgements
-We thank the authors of [FasterViT](https://github.com/NVlabs/FasterViT), [MambaVision](https://github.com/NVlabs/MambaVision), [CMC](https://github.com/HobbitLong/CMC/) and [Timm](https://github.com/huggingface/pytorch-image-models) for their valuable open-source contributions that significantly influenced this work.
-
-## Citation
-If you use our work or our implementation in this repo, or find them helpful, please consider giving a citation.
+```yaml
+model:
+  kwargs:
+    pretrained: true
+    pretrained_path: <path_to_pretrained_checkpoint>
+    freeze_mode: <type_of_freeze>
 ```
-@article{agrawalk2025atlas,
-  title={Atlas: Multi-Scale Attention Improves Long Context Image Modeling},
-    author={Agrawal, Kumar Krishna and Lian, Tony and Liu, Longchao and Harguindeguy, Natalia and Li, Boyi and Bick, Alexander and Chung, Maggie and Darrell, Trevor and Yala, Adam},
-    journal={arXiv preprint arXiv:2503.12355},
-    year={2025}
-}
+
+- **`pretrained`** — set to `true` to load weights from a pretrained checkpoint before training
+- **`pretrained_path`** — path to the pretrained checkpoint file to load from
+- **`freeze_mode`** — controls which parts of the model are frozen during finetuning (e.g., backbone, encoder, etc.)
+
+---
+
+### Job Scripts
+
+The `jobs/` directory contains shell scripts used to launch experiments. Refer to these scripts for experiment-specific launch configurations and to understand how experiments are structured and submitted.
+
+---
+
+### Output and Error Logs
+
+All output and error logs are stored in the `Output_Logs/` directory. Logs are named after their corresponding experiment.
+
+For experiments that were resumed, the logs from subsequent runs are suffixed with `_1`, `_2`, and so on, appended to the original log name. For example:
+
 ```
+Output_Logs/
+├── experiment_name.out         # Initial run — output log
+├── experiment_name.err         # Initial run — error log
+├── experiment_name_1.out       # First resume — output log
+├── experiment_name_1.err       # First resume — error log
+├── experiment_name_2.out       # Second resume — output log
+└── experiment_name_2.err       # Second resume — error log
+```
+
+---
+
+## Running an Experiment
+
+### Step 1 — Activate the Environment
+
+```bash
+source <path_to_miniconda3>/miniconda3/etc/profile.d/conda.sh
+conda activate <path_to_env>
+```
+
+### Step 2 — Navigate to the Working Directory
+
+```bash
+cd <path_to_Atlas>
+```
+
+### Step 3 — Launch the Experiment
+
+Use PyTorch's distributed launcher to run the experiment with the desired config file:
+
+```bash
+python -m torch.distributed.launch \
+    --nproc_per_node=4 \
+    --master_port=28428 \
+    main.py configs/<config_file_name>
+```
+
+> **Note:** `--nproc_per_node=4` specifies the number of GPUs to use. Adjust this value based on your available hardware.
+
+Refer to the scripts inside the `jobs/` directory for complete, experiment-specific run commands.
+
+---
